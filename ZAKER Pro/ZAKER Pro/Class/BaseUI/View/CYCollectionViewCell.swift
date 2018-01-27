@@ -1,0 +1,13 @@
+//
+//  CYCollectionViewCell.swift
+//  CYViewController
+//
+//  Created by 红鹊豆 on 2018/1/26.
+//  Copyright © 2018年 GuoBin. All rights reserved.
+//
+
+import UIKit
+
+class CYCollectionViewCell: UICollectionViewCell {
+    
+}

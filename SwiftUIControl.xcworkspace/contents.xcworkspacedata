@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ZAKER Pro/ZAKER Pro.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CYViewController/CYViewController.xcodeproj">
+   </FileRef>
+</Workspace>
