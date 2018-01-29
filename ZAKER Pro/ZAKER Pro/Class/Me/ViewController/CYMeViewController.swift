@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CYMeViewController: UIViewController {
+class CYMeViewController: CYViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

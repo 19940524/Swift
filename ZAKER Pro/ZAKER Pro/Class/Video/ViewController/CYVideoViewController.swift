@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CYVideoViewController: UIViewController {
+class CYVideoViewController: CYViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

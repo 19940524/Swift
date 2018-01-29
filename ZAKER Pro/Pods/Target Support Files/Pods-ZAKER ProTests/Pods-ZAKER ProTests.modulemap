@@ -1,0 +1,6 @@
+framework module Pods_ZAKER_ProTests {
+  umbrella header "Pods-ZAKER ProTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

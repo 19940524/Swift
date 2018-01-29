@@ -44,6 +44,11 @@
 		4DCEBDEB201C30A800F6A9CA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDDF201C30A700F6A9CA /* iRate.bundle */; };
 		4DCEBDEC201C30A800F6A9CA /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDE0201C30A800F6A9CA /* AlipaySDK.bundle */; };
 		4DCEBDF6201C927100F6A9CA /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEBDF5201C927100F6A9CA /* pch.swift */; };
+		A6948BBD201E102000B1E2AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6948BBC201E102000B1E2AA /* Extensions.swift */; };
+		A6948BBF201E1C4B00B1E2AA /* BBNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */; };
+		B2706C9F768E383E4E3036BD /* Pods_ZAKER_Pro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */; };
+		BD31C5A8680A3765ED0ABE22 /* Pods_ZAKER_ProUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169F05E5672D9E47EAAEFA3B /* Pods_ZAKER_ProUITests.framework */; };
+		E5A231E5DD9439A5AA727752 /* Pods_ZAKER_ProTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ECF9A8949721CFEB5361A3 /* Pods_ZAKER_ProTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00B9603EE6DA05479564636C /* Pods-ZAKER Pro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER Pro.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro.release.xcconfig"; sourceTree = "<group>"; };
+		169F05E5672D9E47EAAEFA3B /* Pods_ZAKER_ProUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_ProUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28AE9AA0C8953D650DF0003C /* Pods-ZAKER ProUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER ProUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER ProUITests/Pods-ZAKER ProUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		28F8130AFA7769B808E86FCD /* Pods-ZAKER ProTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER ProTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER ProTests/Pods-ZAKER ProTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3397D43FF9CF5800FCD8926A /* Pods-ZAKER ProTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER ProTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER ProTests/Pods-ZAKER ProTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D662F63201C128500330150 /* CYMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYMeViewController.swift; sourceTree = "<group>"; };
 		4D662F65201C129A00330150 /* CYSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYSocialViewController.swift; sourceTree = "<group>"; };
 		4D662F67201C12AB00330150 /* CYLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYLocalViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +117,12 @@
 		4DCEBDDF201C30A700F6A9CA /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		4DCEBDE0201C30A800F6A9CA /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		4DCEBDF5201C927100F6A9CA /* pch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pch.swift; sourceTree = "<group>"; };
+		6EA872BA2864FB7105C180D7 /* Pods-ZAKER ProUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER ProUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER ProUITests/Pods-ZAKER ProUITests.release.xcconfig"; sourceTree = "<group>"; };
+		862111B80BBC04D73EF5DEDC /* Pods-ZAKER Pro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER Pro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro.debug.xcconfig"; sourceTree = "<group>"; };
+		A6948BBC201E102000B1E2AA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBNavigationBar.swift; sourceTree = "<group>"; };
+		D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8ECF9A8949721CFEB5361A3 /* Pods_ZAKER_ProTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_ProTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2706C9F768E383E4E3036BD /* Pods_ZAKER_Pro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A231E5DD9439A5AA727752 /* Pods_ZAKER_ProTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,12 +146,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD31C5A8680A3765ED0ABE22 /* Pods_ZAKER_ProUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B689AB1E0C40E10D8EAFE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				862111B80BBC04D73EF5DEDC /* Pods-ZAKER Pro.debug.xcconfig */,
+				00B9603EE6DA05479564636C /* Pods-ZAKER Pro.release.xcconfig */,
+				28F8130AFA7769B808E86FCD /* Pods-ZAKER ProTests.debug.xcconfig */,
+				3397D43FF9CF5800FCD8926A /* Pods-ZAKER ProTests.release.xcconfig */,
+				28AE9AA0C8953D650DF0003C /* Pods-ZAKER ProUITests.debug.xcconfig */,
+				6EA872BA2864FB7105C180D7 /* Pods-ZAKER ProUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3289BD4D73A061B5D6F1A95B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */,
+				F8ECF9A8949721CFEB5361A3 /* Pods_ZAKER_ProTests.framework */,
+				169F05E5672D9E47EAAEFA3B /* Pods_ZAKER_ProUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4D84B6BB201B5D0E0091FEF6 /* Video */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +311,8 @@
 				4DB234FA201B4DCF001A8DBE /* ZAKER ProTests */,
 				4DB23505201B4DCF001A8DBE /* ZAKER ProUITests */,
 				4DB234E4201B4DCE001A8DBE /* Products */,
+				07B689AB1E0C40E10D8EAFE3 /* Pods */,
+				3289BD4D73A061B5D6F1A95B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,8 +369,6 @@
 				4DB23588201B4FC8001A8DBE /* TabB */,
 				4DB2355B201B4ED1001A8DBE /* BaseUI */,
 				4DB2356D201B4ED1001A8DBE /* Helper */,
-				4DB23570201B4ED1001A8DBE /* Lib */,
-				4DB23571201B4ED1001A8DBE /* Network */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -361,6 +403,7 @@
 				4DB23565201B4ED1001A8DBE /* CYTableViewCell.swift */,
 				4DB23566201B4ED1001A8DBE /* CYToolbar.swift */,
 				4DB23567201B4ED1001A8DBE /* CYView.swift */,
+				A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,38 +421,9 @@
 		4DB2356D201B4ED1001A8DBE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				4DB2356E201B4ED1001A8DBE /* Category */,
-				4DB2356F201B4ED1001A8DBE /* Tools */,
+				A6948BBB201E100700B1E2AA /* Extensions */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		4DB2356E201B4ED1001A8DBE /* Category */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		4DB2356F201B4ED1001A8DBE /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		4DB23570201B4ED1001A8DBE /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Lib;
-			sourceTree = "<group>";
-		};
-		4DB23571201B4ED1001A8DBE /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		4DB23580201B4EDA001A8DBE /* Home */ = {
@@ -479,6 +493,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		A6948BBB201E100700B1E2AA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A6948BBC201E102000B1E2AA /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -486,9 +508,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DB2350B201B4DCF001A8DBE /* Build configuration list for PBXNativeTarget "ZAKER Pro" */;
 			buildPhases = (
+				BD6F47FA1861E2ECA12660C1 /* [CP] Check Pods Manifest.lock */,
 				4DB234DF201B4DCE001A8DBE /* Sources */,
 				4DB234E0201B4DCE001A8DBE /* Frameworks */,
 				4DB234E1201B4DCE001A8DBE /* Resources */,
+				17CA5B4F828D2271293DCF0B /* [CP] Embed Pods Frameworks */,
+				81AAC813C2379305DA80E4C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -503,9 +528,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DB2350E201B4DCF001A8DBE /* Build configuration list for PBXNativeTarget "ZAKER ProTests" */;
 			buildPhases = (
+				DD4D32D5612063D43EF33699 /* [CP] Check Pods Manifest.lock */,
 				4DB234F3201B4DCF001A8DBE /* Sources */,
 				4DB234F4201B4DCF001A8DBE /* Frameworks */,
 				4DB234F5201B4DCF001A8DBE /* Resources */,
+				4044D8A008945CDC14BC72AD /* [CP] Embed Pods Frameworks */,
+				8B5DEF90D83D30DE1D93EEB0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -521,9 +549,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DB23511201B4DCF001A8DBE /* Build configuration list for PBXNativeTarget "ZAKER ProUITests" */;
 			buildPhases = (
+				1C70AAD207686811E2E67D22 /* [CP] Check Pods Manifest.lock */,
 				4DB234FE201B4DCF001A8DBE /* Sources */,
 				4DB234FF201B4DCF001A8DBE /* Frameworks */,
 				4DB23500201B4DCF001A8DBE /* Resources */,
+				8AA3D74B0E77A78F49F000A5 /* [CP] Embed Pods Frameworks */,
+				FDBD1E63DFB070D58A685CBC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -620,11 +651,150 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		17CA5B4F828D2271293DCF0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C70AAD207686811E2E67D22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4044D8A008945CDC14BC72AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER ProTests/Pods-ZAKER ProTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81AAC813C2379305DA80E4C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AA3D74B0E77A78F49F000A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER ProUITests/Pods-ZAKER ProUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B5DEF90D83D30DE1D93EEB0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER ProTests/Pods-ZAKER ProTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD6F47FA1861E2ECA12660C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DD4D32D5612063D43EF33699 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FDBD1E63DFB070D58A685CBC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER ProUITests/Pods-ZAKER ProUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DB234DF201B4DCE001A8DBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6948BBF201E1C4B00B1E2AA /* BBNavigationBar.swift in Sources */,
 				4D662F68201C12AB00330150 /* CYLocalViewController.swift in Sources */,
 				4DB23577201B4ED1001A8DBE /* CYScrollView.swift in Sources */,
 				4DB23574201B4ED1001A8DBE /* CYCollectionViewCell.swift in Sources */,
@@ -634,6 +804,7 @@
 				4DB23578201B4ED1001A8DBE /* CYTableView.swift in Sources */,
 				4DB2357D201B4ED1001A8DBE /* CYTabBarController.swift in Sources */,
 				4DB23579201B4ED1001A8DBE /* CYTableViewCell.swift in Sources */,
+				A6948BBD201E102000B1E2AA /* Extensions.swift in Sources */,
 				4D84B6C0201B5D3C0091FEF6 /* CYVideoViewController.swift in Sources */,
 				4DB2357A201B4ED1001A8DBE /* CYToolbar.swift in Sources */,
 				4DB23576201B4ED1001A8DBE /* CYLabel.swift in Sources */,
@@ -801,6 +972,7 @@
 		};
 		4DB2350C201B4DCF001A8DBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 862111B80BBC04D73EF5DEDC /* Pods-ZAKER Pro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -808,6 +980,7 @@
 				DEVELOPMENT_TEAM = 423Q98XCYF;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ZAKER Pro/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GuoBin.ZAKER-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -819,6 +992,7 @@
 		};
 		4DB2350D201B4DCF001A8DBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B9603EE6DA05479564636C /* Pods-ZAKER Pro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -826,6 +1000,7 @@
 				DEVELOPMENT_TEAM = 423Q98XCYF;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ZAKER Pro/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GuoBin.ZAKER-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -837,6 +1012,7 @@
 		};
 		4DB2350F201B4DCF001A8DBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28F8130AFA7769B808E86FCD /* Pods-ZAKER ProTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -853,6 +1029,7 @@
 		};
 		4DB23510201B4DCF001A8DBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3397D43FF9CF5800FCD8926A /* Pods-ZAKER ProTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -869,6 +1046,7 @@
 		};
 		4DB23512201B4DCF001A8DBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28AE9AA0C8953D650DF0003C /* Pods-ZAKER ProUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -884,6 +1062,7 @@
 		};
 		4DB23513201B4DCF001A8DBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EA872BA2864FB7105C180D7 /* Pods-ZAKER ProUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
