@@ -2,23 +2,25 @@
 
 
 # 学习计划
-# Views and Controls
+## Views and Controls
 UIView
 
-# Container Views
+## Container Views
 Table Views
+
 Collection Views
+
 UIScrollView
 UIStackView
 
-# Content Views
+## Content Views
 UIImageView
 UIPickerView
 UIProgressView
 UIActivityIndicatorView
 UIWebView
 
-# Controls
+## Controls
 UIControl
 UIButton
 UISwitch
@@ -28,12 +30,12 @@ UIPageControl
 UISegmentedControl
 UIStepper
 
-# Text Views 
+## Text Views 
 UILabel
 UITextField
 UITextView
 
-# Bars
+## Bars
 UIBarItem
 UIBarButtonItem
 UITabBar
