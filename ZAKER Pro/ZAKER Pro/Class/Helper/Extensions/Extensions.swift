@@ -24,7 +24,7 @@ extension UIViewController {
         
         let navigationBar = BBNavigationBar()
         
-        self.view.addSubview(navigationBar)
+//        self.view.addSubview(navigationBar)
         
         return navigationBar
     }

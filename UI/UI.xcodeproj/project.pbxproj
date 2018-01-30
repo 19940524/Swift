@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3E7B1B2020933700E76641 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E7B1A2020933700E76641 /* Extension.swift */; };
+		4D3E7B1D2020948400E76641 /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E7B1C2020948300E76641 /* pch.swift */; };
 		4D5918A1201F3C2800E17A3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5918A0201F3C2800E17A3E /* AppDelegate.swift */; };
 		4D5918A3201F3C2800E17A3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5918A2201F3C2800E17A3E /* ViewController.swift */; };
 		4D5918A6201F3C2800E17A3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5918A4201F3C2800E17A3E /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D3E7B1A2020933700E76641 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		4D3E7B1C2020948300E76641 /* pch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = pch.swift; path = "../../ZAKER Pro/ZAKER Pro/Class/Other/pch.swift"; sourceTree = "<group>"; };
 		4D59189D201F3C2800E17A3E /* UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5918A0201F3C2800E17A3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D5918A2201F3C2800E17A3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				4D5918A7201F3C2800E17A3E /* Assets.xcassets */,
 				4D5918A9201F3C2800E17A3E /* LaunchScreen.storyboard */,
 				4D5918AC201F3C2800E17A3E /* Info.plist */,
+				4D3E7B1A2020933700E76641 /* Extension.swift */,
+				4D3E7B1C2020948300E76641 /* pch.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3E7B1B2020933700E76641 /* Extension.swift in Sources */,
 				4D5918A3201F3C2800E17A3E /* ViewController.swift in Sources */,
 				4D5918A1201F3C2800E17A3E /* AppDelegate.swift in Sources */,
+				4D3E7B1D2020948400E76641 /* pch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

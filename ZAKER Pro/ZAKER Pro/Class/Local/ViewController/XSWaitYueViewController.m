@@ -10,10 +10,17 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "YSCRippleView.h"
-#import "CYXSHelper.h"
-#import "XSYingYueView.h"
+#import "XSConfiguration.h"
 
-@interface XSWaitYueViewController () <MKMapViewDelegate>
+#import "XSYingYueView.h"
+#import "XSYingYueModel.h"
+#import "XSYYRDetailsController.h"
+#import "XSMeYueListViewController.h"
+
+@interface XSWaitYueViewController () <MKMapViewDelegate> {
+    BOOL _isCanQ;
+    NSInteger _number_of;
+}
 
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UIButton *revocationButton;
@@ -38,6 +45,9 @@
 }
 
 - (void)initialize {
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(completeToOrderList) name:WAIT_YUE_COMPLETE object:nil];
     
     _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_backButton setImage:[UIImage imageNamed:@"y_tzyf_fh"] forState:UIControlStateNormal];
@@ -70,7 +80,11 @@
     }];
     
     [self.view addSubview:self.rippleView];
-    [_rippleView showWithRippleType:YSCRippleTypeCircle];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.yingYueList.count == 0) {
+            [_rippleView showWithRippleType:YSCRippleTypeCircle];
+        }
+    });
     
     [self yingYueView];
 }
@@ -100,27 +114,27 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    NSLog(@"regionWillChangeAnimated");
+    NSLog(@"regionDidChangeAnimated");
 }
 
 - (void)mapViewWillStartLoadingMap:(MKMapView *)mapView {
-    NSLog(@"regionWillChangeAnimated");
+    NSLog(@"mapViewWillStartLoadingMap");
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-    NSLog(@"regionWillChangeAnimated");
+    NSLog(@"mapViewDidFinishLoadingMap");
 }
 
 - (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
-    NSLog(@"regionWillChangeAnimated");
+    NSLog(@"mapViewDidFailLoadingMap");
 }
 
 - (void)wyBackAction {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"yuBackAction" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:YU_BACK_ACTION object:nil];
 }
 
 //- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-//    
+//
 //    MKPinAnnotationView *aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MKPinAnnotationView"];
 //    aView.canShowCallout = YES;
 //    aView.animatesDrop = YES;
@@ -136,11 +150,29 @@
 
 #pragma mark - 撤销
 - (void)revocationAction {
-    if (self.yingYueList.count) {
-        self.yingYueList = [@[] mutableCopy];
-    } else {
-        self.yingYueList = [@[@"123"] mutableCopy];
-    }
+    WS(wSelf);
+    UIAlertController *alert = [UIAlertController AlertWithTitle:nil
+                                                         message:@"您确定取消约会吗?"
+                                                     cancelTitle:@"取消"
+                                                destructiveTitle:nil
+                                                 completionBlock:^(UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                     if (buttonIndex == 1) {
+                                                         [MBProgressHUD showActivityMessageInView:@""];
+                                                         NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                                                         [params setValue:self.yue_id forKey:@"yue_id"];
+                                                         
+                                                         [CYXSHelper cancelFaYue:params success:^(id obj) {
+                                                             [MBProgressHUD hideHUD];
+                                                             [wSelf wyBackAction];
+                                                         } failure:^(id obj) {
+                                                             [MBProgressHUD hideHUD];
+                                                         }];
+                                                     }
+                                                 } otherTitles:@"确定", nil];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+    
 }
 
 - (YSCRippleView *)rippleView {
@@ -156,6 +188,7 @@
 - (XSYingYueView *)yingYueView {
     if (!_yingYueView) {
         _yingYueView = [[XSYingYueView alloc] init];
+        _yingYueView.yue_id = self.yue_id;
         [self.view addSubview:_yingYueView];
     }
     return _yingYueView;
@@ -170,8 +203,11 @@
 - (void)setShowYYTableView:(BOOL)showYYTableView {
     _showYYTableView = showYYTableView;
     
+    _yingYueView.dataList = self.yingYueList;
+    
     if (showYYTableView) {
         [_rippleView closeRippleTimer];
+        
     } else {
         
     }
@@ -203,12 +239,13 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    _isCanQ = YES;
     [self afterUpdateYingYueList:0];
 }
 
 - (void)afterUpdateYingYueList:(NSTimeInterval)interval {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self updateYingYueList];
+        if (_isCanQ) [self updateYingYueList];
     });
 }
 
@@ -216,27 +253,43 @@
     [CYXSHelper yingYueRenList:self.yue_id success:^(id obj) {
         NSLog(@"obj = %@",obj);
         NSArray *list = obj[@"result"];
-        self.yingYueList = [list mutableCopy];
+        self.yingYueList = [[XSYingYueModel mj_objectArrayWithKeyValuesArray:list] mutableCopy];
         
-        
-//        --number_of    订单所需人数 --user_cou     总应约人数  --kaishi_time   倒计时开始时间戳  --jieshu_time   倒计时结束时间戳
+        //        --number_of    订单所需人数 --user_cou     总应约人数  --kaishi_time   倒计时开始时间戳  --jieshu_time   倒计时结束时间戳
         NSString *number_of     = obj[@"number_of"];
         NSString *user_cou      = obj[@"user_cou"];
-        NSString *kaishi_time   = obj[@"kaishi_time"];
+        NSString *yue_user_cou   = obj[@"yue_user_cou"];
         NSString *jieshu_time   = obj[@"jieshu_time"];
+        _number_of = number_of.integerValue;
+        
+        [_yingYueView setParams:number_of cou:user_cou time:jieshu_time selCou:yue_user_cou];
         
         [self afterUpdateYingYueList:5];
     } failure:^(id obj) {
-        NSLog(@"obj = %@",obj);
+        self.yingYueList = nil;
         [self afterUpdateYingYueList:5];
     }];
 }
 
 
-
+- (void)completeToOrderList {
+    NSArray *list = [self.yingYueList copy];
+    int i = 0;
+    for (XSYingYueModel *model in list) {
+        if (model.yue_user_state.integerValue == 1) {
+            i += 1;
+            
+            if (_number_of == i) {
+                [self.navigationController pushViewController:[[XSMeYueListViewController alloc] init] animated:YES];
+                return;
+            }
+        }
+    }
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    _isCanQ = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -245,17 +298,20 @@
 }
 
 - (void)dealloc {
+    _mapView.delegate = nil;
     [self.mapView removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

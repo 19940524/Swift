@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,7 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04A7DA89FE2EF2DD31475B0FA77A8A9A /* Pods-ZAKER ProTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ZAKER ProTests.modulemap"; sourceTree = "<group>"; };
+		04A7DA89FE2EF2DD31475B0FA77A8A9A /* Pods-ZAKER ProTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZAKER ProTests.modulemap"; sourceTree = "<group>"; };
 		068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		07E105DAE42438E62A74E11FA715CAA9 /* Pods-ZAKER Pro-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZAKER Pro-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
-		4770637DA8457A7084732EBFDFF7E33B /* Pods_ZAKER_ProTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZAKER_ProTests.framework; path = "Pods-ZAKER ProTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4770637DA8457A7084732EBFDFF7E33B /* Pods_ZAKER_ProTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_ProTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A85101C7CB000DBEE8F641490B02C6 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
 		48FEFB59DCD06A3E74071CC62D7EA584 /* Pods-ZAKER ProTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZAKER ProTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		54320EA4F33391371B848D92E76E7E70 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		543D65D1D2DA29AED7C1388B43F27098 /* Pods-ZAKER Pro-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZAKER Pro-dummy.m"; sourceTree = "<group>"; };
 		5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
-		5964B1254BC28282173831E9E5178E35 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5964B1254BC28282173831E9E5178E35 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F63261E95953A6FAC583CB612476E2E /* Pods-ZAKER ProUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZAKER ProUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		5FF9CB5C82ACB437D56163693C4E632E /* Pods-ZAKER Pro-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZAKER Pro-resources.sh"; sourceTree = "<group>"; };
@@ -104,14 +104,14 @@
 		645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
 		6BD065792728A902DA72908495D325E4 /* Pods-ZAKER ProUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZAKER ProUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		7A2A94C706B9313F4163D1D7BBC51C7D /* Pods-ZAKER ProTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZAKER ProTests-dummy.m"; sourceTree = "<group>"; };
-		7AA906FE8AA182CA20F5F85A9C07BD31 /* Pods-ZAKER ProUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ZAKER ProUITests.modulemap"; sourceTree = "<group>"; };
-		7BBDB927398162B7988AD9E24117222B /* Pods_ZAKER_ProUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZAKER_ProUITests.framework; path = "Pods-ZAKER ProUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AA906FE8AA182CA20F5F85A9C07BD31 /* Pods-ZAKER ProUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZAKER ProUITests.modulemap"; sourceTree = "<group>"; };
+		7BBDB927398162B7988AD9E24117222B /* Pods_ZAKER_ProUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_ProUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDA9C509CFBD14983CE0196FD925E05 /* Pods-ZAKER ProUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZAKER ProUITests-resources.sh"; sourceTree = "<group>"; };
 		7D0929C3E37021E47614B4D9F984EACF /* Pods-ZAKER ProUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZAKER ProUITests-frameworks.sh"; sourceTree = "<group>"; };
 		8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
 		92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C6ED1CAEDEDF3FBFCDA23438167830 /* Pods-ZAKER Pro-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZAKER Pro-umbrella.h"; sourceTree = "<group>"; };
 		9D29A8857F15F5C43F37824DA0BF1436 /* Pods-ZAKER ProTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZAKER ProTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		C04C391051D0F007E876600190446365 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		C57A5239E6FC586FB28041A7292EB104 /* Pods-ZAKER ProUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZAKER ProUITests-umbrella.h"; sourceTree = "<group>"; };
 		C6BD7B9646FAC432EBB2EF249D180135 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C891CFD64212029E1907D51D03B51FC8 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SnapKit.modulemap; sourceTree = "<group>"; };
+		C891CFD64212029E1907D51D03B51FC8 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CE488FE8806596C1BA422425EBCD83D4 /* Pods-ZAKER ProUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZAKER ProUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CF90BEADA4E8C1351A32C2D22DA14E5A /* Pods-ZAKER ProTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZAKER ProTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,8 +133,8 @@
 		DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
-		DE166F561F044A55EF442823E66DA569 /* Pods-ZAKER Pro.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ZAKER Pro.modulemap"; sourceTree = "<group>"; };
-		DE2F399BA425A331745DD8E626ABFB00 /* Pods_ZAKER_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZAKER_Pro.framework; path = "Pods-ZAKER Pro.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE166F561F044A55EF442823E66DA569 /* Pods-ZAKER Pro.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZAKER Pro.modulemap"; sourceTree = "<group>"; };
+		DE2F399BA425A331745DD8E626ABFB00 /* Pods_ZAKER_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E537D8A95FBA2081C5346979916051 /* Pods-ZAKER ProTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZAKER ProTests-frameworks.sh"; sourceTree = "<group>"; };
 		E641C2E8FF14DC7DE703EC181E3DDB4A /* Pods-ZAKER ProTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZAKER ProTests-umbrella.h"; sourceTree = "<group>"; };
 		EA053D5AF685212FC512FBDE0BEE6524 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -325,7 +325,6 @@
 				45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */,
 				4762838CF26172976F1BC2F667BB1E33 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -461,7 +460,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -673,19 +672,29 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -699,6 +708,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -784,20 +794,30 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
