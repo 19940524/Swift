@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBController = CYTabBarController()
         
         self.window?.rootViewController = tabBController
-        
         return true
     }
 

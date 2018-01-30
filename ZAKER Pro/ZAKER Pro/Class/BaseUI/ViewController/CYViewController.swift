@@ -13,7 +13,8 @@ class CYViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receiverNotification", name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +22,7 @@ class CYViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 

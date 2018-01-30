@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CYSocialViewController: UIViewController {
+class CYSocialViewController: CYViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

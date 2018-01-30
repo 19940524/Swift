@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CYLocalViewController: UIViewController {
+class CYLocalViewController: CYViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

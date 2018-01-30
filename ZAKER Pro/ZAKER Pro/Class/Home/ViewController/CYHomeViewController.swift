@@ -13,7 +13,7 @@ class CYHomeViewController: CYViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.createNavigationBar()
     }
 
     override func didReceiveMemoryWarning() {
