@@ -13,8 +13,15 @@ class CYViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.isHidden = true
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receiverNotification", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.bbNavigationBar?.frame = CGRect(x: 0, y: 0, width: CYDevice.width(), height: CYDevice.navigation_h())
+        
     }
 
     override func didReceiveMemoryWarning() {

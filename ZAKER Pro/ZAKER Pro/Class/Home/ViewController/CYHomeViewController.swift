@@ -14,8 +14,39 @@ class CYHomeViewController: CYViewController {
         super.viewDidLoad()
         
         self.createNavigationBar()
+        
+        
+        
+        let button = UIButton()
+        button.backgroundColor = UIColor.red
+        button.setTitle("测试", for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        button.center = self.view.center
+        button.addTarget(self, action: #selector(CYHomeViewController.buttonAction), for: .touchUpInside)
+        self.view.addSubview(button)
+        
     }
 
+    @objc func buttonAction() {
+        for view in (self.navigationController?.navigationBar.subviews)! {
+            print("----------------",view)
+            for subview in view.subviews {
+                print(subview)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

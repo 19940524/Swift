@@ -61,26 +61,21 @@ class CYTabBarController: UITabBarController {
         
         self.viewControllers = viewControllers
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 9, weight: .ultraLight),
                           NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)]
-        for nc in viewControllers {
+        for nc in self.viewControllers! {
             nc.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
             nc.tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: NAV_COLOR], for: .selected)
-            nc.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -3)
+            nc.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, CYDevice.isPortrait() ? -3 : 0)
         }
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-    }
-    
-    func getSelImage(name: String) -> UIImage {
-        let selImg = UIImage(named:name)
-        return selImg!
-    }
-    
-    func getNormalImg(name: String) -> UIImage {
-        return (UIImage(named:name)?.withRenderingMode(.alwaysOriginal))!
     }
     
     /*

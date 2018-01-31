@@ -16,15 +16,18 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                        "Controls"]
     
     let allValue = ["Views and Controls" : ["UIView"],
+                    
                    "Container Views"    : ["Table Views",
                                            "Collection Views",
                                            "UIScrollView",
                                            "UIStackView"],
+                   
                    "Content Views"       : ["UIImageView",
                                             "UIPickerView",
                                             "UIProgressView",
                                             "UIActivityIndicatorView",
                                             "UIWebView"],
+                   
                    "Controls"            : ["UIButton",
                                             "UISwitch",
                                             "UISlider",
@@ -46,9 +49,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
         self.view.addSubview(self.tableView!)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.orientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,32 +83,40 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(CYDevice.isPortrait());
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let name   = headerNames[indexPath.section]
+        let values = allValue[name]
+        let uiName = values![indexPath.row]
+        
+        
+        if  name == "Views and Controls" ||
+            name == "Container Views" {
+            let destinationVC = DestinationViewController()
+            destinationVC.uiName = uiName
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        }
+//        else if name == "Container Views" {
+//            if indexPath.row == 0 {
+//
+//            } else {
+//
+//            }
+//        }
+        
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
         self.setTableFrame()
-        
     }
     
     func setTableFrame() {
         
-        let y = CYDevice.isPortrait() ? 20 : 0
-        let height = CYDevice.isPortrait() ? CYDevice.height()-y : CYDevice.height()
-        tableView.frame = CGRect(x: 0, y: y, width: CYDevice.width(), height: height)
-    }
-    
-    @objc func orientationDidChange() {
-        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-            print("Landscape")
-        }
-        
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
-            print("Portrait")
-        }
-        self.setTableFrame()
+//        let y = CYDevice.isPortrait() ? 20 : 0
+//        let height = CYDevice.isPortrait() ? CYDevice.height()-y : CYDevice.height()
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
     
     

@@ -49,21 +49,19 @@ class CYDevice {
         return false
     }
     // 屏幕宽度
-    static func width() -> Int {
-        print(Int(UIScreen.main.bounds.width))
-        let width = Int(UIScreen.main.bounds.width)
-        return width
+    static func width() -> CGFloat {
+        
+        return UIScreen.main.bounds.width
     }
     // 屏幕高度
-    static func height() -> Int {
-        print(Int(UIScreen.main.bounds.height))
-        let height = Int(UIScreen.main.bounds.height)
-        return height
+    static func height() -> CGFloat {
+        
+        return UIScreen.main.bounds.height
     }
     // 导航栏高度
-    static func navHeight() -> Int {
-        
-        let height = (self.isPortrait() ? (self.isX() ? 88 : 64) : 44)
+    static func navHeight() -> CGFloat {
+        // 系统横屏的高度 为 32
+        let height = CGFloat(self.isPortrait() ? (self.isX() ? 88 : 64) : 32)
         
         return height
     }

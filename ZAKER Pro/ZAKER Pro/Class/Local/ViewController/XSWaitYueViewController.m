@@ -151,8 +151,8 @@
 #pragma mark - 撤销
 - (void)revocationAction {
     WS(wSelf);
-    UIAlertController *alert = [UIAlertController AlertWithTitle:nil
-                                                         message:@"您确定取消约会吗?"
+    UIAlertController *alert = [UIAlertController AlertWithTitle:@"亲!您确定撤销约会吗?"
+                                                         message:@"撤销后赏金将全额返回到你的看吧账号上!"
                                                      cancelTitle:@"取消"
                                                 destructiveTitle:nil
                                                  completionBlock:^(UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
