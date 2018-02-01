@@ -10,6 +10,16 @@ import UIKit
 
 class CYViewController: UIViewController {
 
+    override var title: String? {
+        get {
+            return super.title
+        }
+        set {
+            super.title = newValue
+            self.bbNavigationBar?.setText(title: newValue)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +30,9 @@ class CYViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        self.bbNavigationBar?.frame = CGRect(x: 0, y: 0, width: CYDevice.width(), height: CYDevice.navigation_h())
+        let width = CYDevice.width()
+        let height = CYDevice.navigation_h()
+        self.bbNavigationBar?.frame = CGRect(x: 0, y: 0, width: width, height: height)
         
     }
 

@@ -8,38 +8,12 @@
 
 import UIKit
 
-let nbTag = 1600
-
-extension UIViewController {
-    
-    
-    
-    var bbNavigationBar: BBNavigationBar? {
-        var view: BBNavigationBar? = nil
-        if self.view.viewWithTag(nbTag) != nil {
-            view = (self.view.viewWithTag(nbTag) as! BBNavigationBar)
-            if self.title != nil {
-                view?.titleLabel?.text = self.title
-            }
-        }
-        return view
+struct CY_FONT {
+    static func SFUIText(size: CGFloat) -> UIFont? {
+        return UIFont(name: ".SFUIText-Semibold", size: size)
     }
-    
-    
-    @discardableResult
-    func createNavigationBar() -> BBNavigationBar {
-        
-        let navigationBar = BBNavigationBar()
-        navigationBar.tag = nbTag
-        self.view.addSubview(navigationBar)
-        
-        return navigationBar
-    }
-    
     
 }
-
-
 
 class CYDevice {
     // 判断是否iPhone X
@@ -52,6 +26,7 @@ class CYDevice {
     // 判断是否竖屏
     static func isPortrait() -> Bool {
         if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+            
             return false
         }
         
@@ -81,6 +56,10 @@ class CYDevice {
 
     static func statusBar_h() -> CGFloat {
         return self.isPortrait() ? (self.isX() ? 44 : 20) : 0
+    }
+    
+    static func tabbar_h() -> CGFloat {
+        return CGFloat(self.isPortrait() ? (self.isX() ? 83 : 49) : 32)
     }
     
 }

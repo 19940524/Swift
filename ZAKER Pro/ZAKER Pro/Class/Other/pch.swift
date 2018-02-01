@@ -8,8 +8,12 @@
 
 import UIKit
 import Foundation
-
+import SnapKit
 
 
 // ZAKER 主颜色
 let NAV_COLOR = UIColor(red: 232.0 / 255, green: 87.0 / 255, blue: 78.0 / 255, alpha: 1)
+
+let SPLIT_LINE_COLOR = UIColor(red: 232.0 / 255, green: 232.0 / 255, blue: 232.0 / 255, alpha: 1)
+
+let SYS_FONT = UIFont(name: ".SFUIText-Semibold", size: 17)

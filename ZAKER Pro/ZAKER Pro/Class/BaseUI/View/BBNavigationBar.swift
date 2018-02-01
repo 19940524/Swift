@@ -13,26 +13,34 @@ class BBNavigationBar: CYView {
     private let blurView = UIToolbar()
     var bottomLine: UIImageView?
     
-    var _titleLabel: UILabel?
-    var titleLabel: UILabel? {
-        get {
-            if _titleLabel == nil {
-                _titleLabel = UILabel()
-            }
-            return _titleLabel
-        }
-        set {
-            _titleLabel = newValue
-        }
-    }
+    // 左item懒加载
+    var _leftItme: UIButton?
+    lazy var leftItem = { () -> UIButton in
+        _leftItme = UIButton(type: .custom)
+        self.addSubview(_leftItme!)
+        return _leftItme!
+    }()
+
+    var _rightItem: UIButton?
+    lazy var rightItem = { () -> UIButton in
+        _rightItem = UIButton(type: .custom)
+        self.addSubview(_rightItem!)
+        return _rightItem!
+    }()
     
+    // 标题
     
+     var titleLabel = UILabel()
+    
+    // 模糊样式
     var barStyle = UIBarStyle.default {
         willSet {
             print(newValue)
             blurView.barStyle = newValue
         }
     }
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,12 +54,13 @@ class BBNavigationBar: CYView {
         
         self.addSubview(blurView)
         
-        self.titleLabel?.font = UIFont(name: ".SFUIText-Semibold", size: 17) ?? UIFont()
-        self.titleLabel?.textAlignment = .center
-        self.addSubview(self.titleLabel!)
+        self.titleLabel.font = SYS_FONT ?? UIFont()
+        self.titleLabel.textAlignment = .center
+        self.addSubview(self.titleLabel)
         
         self.bottomLine = UIImageView()
-        self.bottomLine?.image = UIImage(named: "nav_line")
+//        self.bottomLine?.image = UIImage(named: "nav_line")
+        self.bottomLine?.backgroundColor = SPLIT_LINE_COLOR
         self.addSubview(self.bottomLine!)
         
     }
@@ -63,25 +72,40 @@ class BBNavigationBar: CYView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.setSubviewFrame()
+    }
+    
+    func setSubviewFrame() {
         blurView.frame = self.bounds
         bottomLine?.frame = CGRect(x: 0, y: CYDevice.navigation_h()-0.5, width: CYDevice.width(), height: 0.5)
         
-        if _titleLabel != nil {
-            self.titleLabel?.sizeToFit()
+        if  titleLabel.text != nil {
+            self.titleLabel.sizeToFit()
             let statusH = CYDevice.statusBar_h()
             let navH = CYDevice.isPortrait() ? 44.0 : 32.0
-            let y = CGFloat(navH / 2.0) - ((titleLabel?.frame.size.height)! / 2.0) + statusH
+            let y = CGFloat(navH / 2.0) - ((titleLabel.frame.size.height) / 2.0) + statusH
             
-            titleLabel?.frame.origin = CGPoint(x: CYDevice.width()/2-(titleLabel?.frame.size.width)!/2, y: y)
+            titleLabel.frame.origin = CGPoint(x: CYDevice.width()/2-(titleLabel.frame.size.width) / 2, y: y)
         }
         
+        if _leftItme != nil {
+            let WH = CYDevice.navigation_h() - CYDevice.statusBar_h()
+            _leftItme?.frame = CGRect(x: CGFloat(0.0), y: CYDevice.statusBar_h(), width: WH, height: WH)
+        }
+        
+        if _rightItem != nil {
+            let WH = CYDevice.navigation_h() - CYDevice.statusBar_h()
+            _rightItem?.frame = CGRect(x: CYDevice.width()-WH, y: CYDevice.statusBar_h(), width: WH, height: WH)
+        }
+    }
+    
+    public func setText(title: String?) {
+        self.titleLabel.text = title
+        self.setSubviewFrame()
     }
     
     
-    
-    
-//    backgroundColor = UIColor.red
-//    frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)
+
     
     
     

@@ -22,8 +22,8 @@ class CYTabBarController: UITabBarController {
     
     func creatSubViewController() {
         
-        let homeVC = CYHomeViewController()
-        homeVC.title = "资讯"
+        let homeVC = CYHomeVC()
+//        homeVC.title = "资讯"
         let hNavVC = CYNavigationController(rootViewController:homeVC)
         hNavVC.tabBarItem.title = "资讯"
         hNavVC.tabBarItem.selectedImage = UIImage(named:"DashboardTabBarItemInformation")
