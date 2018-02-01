@@ -3,7 +3,7 @@
 
 # 学习计划
 ## Views and Controls
-UIView
+UIView  2018.1.31 21:00
 
 ## Container Views
 Table Views
@@ -39,7 +39,7 @@ UIDatePicker
 
 UIPageControl
 
-UISegmentedControl
+UISegmentedControl  2018.1.31 21:00
 
 UIStepper
 
