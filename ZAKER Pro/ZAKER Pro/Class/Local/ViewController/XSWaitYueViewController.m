@@ -301,6 +301,7 @@
     _mapView.delegate = nil;
     [self.mapView removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 /*

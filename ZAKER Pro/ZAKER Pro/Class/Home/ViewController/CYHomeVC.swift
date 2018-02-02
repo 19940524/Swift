@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
 
@@ -15,6 +16,7 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
     private let subTableView  = SubscribeTableView(frame: CGRect(), style: .plain)
     private let liveTableView = LiveTableView(frame: CGRect(), style: .plain)
     private let topMenuView   = TopMenuView()
+    private let hotUrl        = "https://c.m.163.com/recommend/getSubDocPic?from=toutiao&prog=Rpic2&open=&openpath=&passport=WznDdjHz22nrm57NxuzNqZ2WxSDQJdPl%2BJwBqzUqSejL2AgtwrES0PPiPHJrLH2UePBK0dNsyevylzp8V9OOiA%3D%3D&devId=JmnpPZswyTEcbyrMfmsPJVb%2B/H3cH95XF1nu8XmVs9FL6BGnxStm2K1yNLf5aRZn&version=32.0&spever=false&net=wifi&lat=&lon=&ts=1517570676&sign=LDiDqDKIv5U27gW/1UAmU4OxFktUXUk7ZShaI7feJe548ErR02zJ6/KXOnxX046I&encryption=1&canal=appstore&offset=0&size=10&fn=0&spestr=shortnews"
     
 //    var currentIndex = 0
     
@@ -35,6 +37,16 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
         scrollView.addSubview(liveTableView)
         
         
+        Alamofire.request("\(hotUrl)/get").responseJSON { response in
+            print(response.request!)  // 原始的URL请求
+            print(response.response ?? "response error") // HTTP URL响应
+            print(response.data ?? "error")     // 服务器返回的数据
+            print(response.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
         
     }
 
@@ -44,11 +56,10 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
     }
     
     @objc func searchEvent() {
-        self.title = "123"
+        
     }
     
     
-    var changeValue: Int? = nil
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -56,16 +67,6 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
         let statusH = CYDevice.statusBar_h()
         let topM_H = CYDevice.navigation_h() - statusH
         topMenuView.frame = CGRect(x: (bbNavigationBar?.width)! / 2 - 140 / 2, y: statusH, width: 140, height: topM_H)
-        
-        
-        // 转屏是 处理滚动视图 偏移量偏差
-        let offsetValue = scrollView.contentOffset.x / scrollView.width
-        if !offsetValue.isNaN {
-            let indexValue = Int(offsetValue)
-            if CGFloat(indexValue) == offsetValue {
-                changeValue = indexValue
-            }
-        }
         
         scrollView.frame = CGRect(x: 0, y: (bbNavigationBar?.bottom)!,
                                   width: view.width,
@@ -76,21 +77,11 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
         hotTableView.frame = CGRect(x: 0, y: 0, width: scrollView.width, height: scrollView.height)
         subTableView.frame = CGRect(x: scrollView.width, y: 0, width: scrollView.width, height: scrollView.height)
         liveTableView.frame = CGRect(x: scrollView.width * 2, y: 0, width: scrollView.width, height: scrollView.height)
-        
 
-        // 转屏是 处理滚动视图 偏移量偏差
-        if changeValue != nil {
-            scrollView.setContentOffset(CGPoint(x: CGFloat(changeValue!) * scrollView.width, y: 0), animated: true)
-        }
-        
-        
+        scrollView.setContentOffset(CGPoint(x: CGFloat(topMenuView.currentIndex) * scrollView.width, y: 0), animated: false)
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        changeValue = nil
-    }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

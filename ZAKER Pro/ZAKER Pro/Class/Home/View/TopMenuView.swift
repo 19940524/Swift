@@ -25,7 +25,7 @@ class TopMenuView: CYView {
     weak var delegate: TopMenuViewDelegate?
     
     private let buttonTag = 1900
-    private var currentIndex = 0
+    public var currentIndex = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,6 +77,8 @@ class TopMenuView: CYView {
         liveButton.frame = CGRect(x: width * 2 + interval * 2, y: 0, width: width, height: self.height)
         
         bottomLine.frame = CGRect(x: (hotButton.titleLabel?.left)!, y: (hotButton.titleLabel?.bottom)! + 3, width: (hotButton.titleLabel?.width)!, height: 2)
+        
+        self.setOffset(x: CGFloat(currentIndex))
     }
     
     func setOffset(x: CGFloat) {
@@ -92,8 +94,6 @@ class TopMenuView: CYView {
         }
         bottomLine.left = newLeft
         
-        print(x)
-        
         if bottomLine.center.x == hotButton.center.x || x < 0.1 {
             self.setCurrentIndex(index: 0)
         } else if bottomLine.center.x == subButton.center.x || (x > 0.9 && x < 1.1) {
@@ -101,23 +101,7 @@ class TopMenuView: CYView {
         } else if bottomLine.center.x == liveButton.center.x || x > 1.9 {
             self.setCurrentIndex(index: 2)
         }
-        
-//        if currentIndex == 0 {
-//            if x > 0.9 {
-//                self.setCurrentIndex(index: 1)
-//            }
-//        } else if currentIndex == 1 {
-//            if x > 1.9 {
-//                self.setCurrentIndex(index: 2)
-//            } else if x < 0.1 {
-//                self.setCurrentIndex(index: 0)
-//            }
-//        } else {
-//            if x < 1.1 {
-//                self.setCurrentIndex(index: 1)
-//            }
-//        }
-        print(currentIndex)
+
     }
     
     func setCurrentIndex(index: Int) {
