@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import SwiftyJSON
 
+// 20 22  107*71
 class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
+    
+    var dataList: Array<JSON>? = Array() {
+        didSet {
+            self.reloadData()
+        }
+    }
     
     override init(frame: CGRect, style: UITableViewStyle) {
         
@@ -16,24 +24,28 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         self.delegate = self
         self.dataSource = self
         self.tableFooterView = UIView()
-        self.backgroundColor = UIColor.red
-        
+        self.backgroundColor = UIColor.white
+        self.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.register(HotOneImgCell.self, forCellReuseIdentifier: "HotOneImgCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return (dataList?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        }
-        return cell!
+        let cell: HotOneImgCell = tableView.dequeueReusableCell(withIdentifier: "HotOneImgCell", for: indexPath) as! HotOneImgCell
+        cell.setParams(par: dataList![indexPath.row])
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return HotOneImgCell.cellHeight
+    }
     
-    
+    deinit {
+        print("\(self) -> 释放了")
+    }
     
     
     

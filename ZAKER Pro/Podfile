@@ -11,6 +11,8 @@ target 'ZAKER Pro' do
 
   pod 'SnapKit', '~> 4.0.0'
   pod 'Alamofire', '~> 4.5'
+  pod 'AlamofireImage', '~> 3.3'
+  pod 'SwiftyJSON'
 
   target 'ZAKER ProTests' do
     inherit! :search_paths

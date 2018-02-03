@@ -16,6 +16,7 @@
 		4D662F64201C128500330150 /* CYMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D662F63201C128500330150 /* CYMeViewController.swift */; };
 		4D662F66201C129A00330150 /* CYSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D662F65201C129A00330150 /* CYSocialViewController.swift */; };
 		4D662F68201C12AB00330150 /* CYLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D662F67201C12AB00330150 /* CYLocalViewController.swift */; };
+		4D73F0232025A78500FCCED6 /* HotBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73F0222025A78500FCCED6 /* HotBaseCell.swift */; };
 		4D84B6C0201B5D3C0091FEF6 /* CYVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B6BF201B5D3C0091FEF6 /* CYVideoViewController.swift */; };
 		4DB234E7201B4DCE001A8DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB234E6201B4DCE001A8DBE /* AppDelegate.swift */; };
 		4DB234EE201B4DCF001A8DBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB234ED201B4DCF001A8DBE /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		4D662F63201C128500330150 /* CYMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYMeViewController.swift; sourceTree = "<group>"; };
 		4D662F65201C129A00330150 /* CYSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYSocialViewController.swift; sourceTree = "<group>"; };
 		4D662F67201C12AB00330150 /* CYLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYLocalViewController.swift; sourceTree = "<group>"; };
+		4D73F0222025A78500FCCED6 /* HotBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotBaseCell.swift; sourceTree = "<group>"; };
 		4D84B6BF201B5D3C0091FEF6 /* CYVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYVideoViewController.swift; sourceTree = "<group>"; };
 		4DB234E3201B4DCE001A8DBE /* ZAKER Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZAKER Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB234E6201B4DCE001A8DBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 		4DB23583201B4F02001A8DBE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D73F0222025A78500FCCED6 /* HotBaseCell.swift */,
 				4D4FA2402022FC5A005D39F3 /* HotTableView.swift */,
 				4D4FA244202301B0005D39F3 /* SubscribeTableView.swift */,
 				4D4FA24220230166005D39F3 /* LiveTableView.swift */,
@@ -674,12 +677,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -846,6 +853,7 @@
 				4DB23575201B4ED1001A8DBE /* CYImageView.swift in Sources */,
 				4DB23573201B4ED1001A8DBE /* CYCollectionView.swift in Sources */,
 				4DB2357B201B4ED1001A8DBE /* CYView.swift in Sources */,
+				4D73F0232025A78500FCCED6 /* HotBaseCell.swift in Sources */,
 				4DB23572201B4ED1001A8DBE /* CYButton.swift in Sources */,
 				4D662F66201C129A00330150 /* CYSocialViewController.swift in Sources */,
 				4DB2357C201B4ED1001A8DBE /* CYNavigationController.swift in Sources */,

@@ -64,5 +64,13 @@ extension UIView {
         }
     }
     
+    var size: CGSize {
+        get {
+            return self.frame.size
+        }
+        set {
+            return self.frame = CGRect(origin: self.frame.origin, size: newValue)
+        }
+    }
     
 }

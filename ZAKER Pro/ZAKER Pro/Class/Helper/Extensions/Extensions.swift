@@ -12,7 +12,19 @@ struct CY_FONT {
     static func SFUIText(size: CGFloat) -> UIFont? {
         return UIFont(name: ".SFUIText-Semibold", size: size)
     }
-    
+
+    static func SFUITextAuto(size: CGFloat) -> UIFont? {
+        return UIFont(name: ".SFUIText-Semibold", size: size * CYDevice.width() / 375)
+    }
+}
+
+struct CY_OFFSET {
+    static func width(w: CGFloat) -> CGFloat {
+        return UIScreen.main.bounds.width / 375.0 * w
+    }
+    static func height(h: CGFloat) -> CGFloat {
+        return UIScreen.main.bounds.height / 667.0 * h
+    }
 }
 
 class CYDevice {
@@ -37,7 +49,6 @@ class CYDevice {
     }
     // 屏幕宽度
     static func width() -> CGFloat {
-        
         return UIScreen.main.bounds.width
     }
     // 屏幕高度

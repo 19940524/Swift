@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
 
@@ -17,6 +18,7 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
     private let liveTableView = LiveTableView(frame: CGRect(), style: .plain)
     private let topMenuView   = TopMenuView()
     private let hotUrl        = "https://c.m.163.com/recommend/getSubDocPic?from=toutiao&prog=Rpic2&open=&openpath=&passport=WznDdjHz22nrm57NxuzNqZ2WxSDQJdPl%2BJwBqzUqSejL2AgtwrES0PPiPHJrLH2UePBK0dNsyevylzp8V9OOiA%3D%3D&devId=JmnpPZswyTEcbyrMfmsPJVb%2B/H3cH95XF1nu8XmVs9FL6BGnxStm2K1yNLf5aRZn&version=32.0&spever=false&net=wifi&lat=&lon=&ts=1517570676&sign=LDiDqDKIv5U27gW/1UAmU4OxFktUXUk7ZShaI7feJe548ErR02zJ6/KXOnxX046I&encryption=1&canal=appstore&offset=0&size=10&fn=0&spestr=shortnews"
+    private var tidList: Array<Dictionary<String, Any>>?
     
 //    var currentIndex = 0
     
@@ -36,16 +38,27 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
         scrollView.addSubview(subTableView)
         scrollView.addSubview(liveTableView)
         
-        
+        // 网络暂时这样写 以后自己写
         Alamofire.request("\(hotUrl)/get").responseJSON { response in
-            print(response.request!)  // 原始的URL请求
-            print(response.response ?? "response error") // HTTP URL响应
-            print(response.data ?? "error")     // 服务器返回的数据
+//            print(response.request!)  // 原始的URL请求
+//            print(response.response ?? "response error") // HTTP URL响应
+//            print(response.data ?? "error")     // 服务器返回的数据
             print(response.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
-            
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+            if response.error == nil {
+                let jsonData = JSON.init(response.data!)
+                print(jsonData["tid"])
+//                self.tidList = (jsonData["tid"] as? Array<Dictionary<String, Any>>)!
+                self.hotTableView.dataList = jsonData["tid"].arrayValue
             }
+            
+            
+//            if let JSON = response.result.value {
+//
+//                var dic = JSON as! Dictionary<String , Any>
+//                self.tidList = (dic["tid"] as? Array<Dictionary<String, Any>>)!
+//                self.hotTableView.dataList = self.tidList
+//
+//            }
         }
         
     }
