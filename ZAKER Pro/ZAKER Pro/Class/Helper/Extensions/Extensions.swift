@@ -16,6 +16,13 @@ struct CY_FONT {
     static func SFUITextAuto(size: CGFloat) -> UIFont? {
         return UIFont(name: ".SFUIText-Semibold", size: size * CYDevice.width() / 375)
     }
+    
+    static func systemAuto(size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size * CYDevice.width() / 375)
+    }
+    static func system(size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size)
+    }
 }
 
 struct CY_OFFSET {
@@ -26,6 +33,32 @@ struct CY_OFFSET {
         return UIScreen.main.bounds.height / 667.0 * h
     }
 }
+
+private let max: CGFloat = 999999.0
+struct CalculateText {
+    
+    static func height(width: CGFloat,text: String,font: UIFont) -> CGFloat {
+        let labelSize = text.boundingRect(with: CGSize(width: width,height: font.lineHeight*2+10),
+                                          options: .usesLineFragmentOrigin,
+                                          attributes: [NSAttributedStringKey.font: font], context: nil)
+        return labelSize.height+10;
+    }
+    static func width(height: CGFloat,text: String,font: UIFont) -> CGFloat {
+        let labelSize = text.boundingRect(with: CGSize(width: max,height: height),
+                                          options: .usesLineFragmentOrigin,
+                                          attributes: [NSAttributedStringKey.font: font], context: nil)
+        return labelSize.width;
+    }
+    
+    static func size(text: String,font: UIFont) -> CGSize {
+        let labelSize: CGSize = text.boundingRect(with: CGSize(width: max,height: max),
+                                                  options: .usesLineFragmentOrigin,
+                                                  attributes: [NSAttributedStringKey.font: font], context: nil).size
+        return labelSize
+    }
+}
+
+
 
 class CYDevice {
     // 判断是否iPhone X

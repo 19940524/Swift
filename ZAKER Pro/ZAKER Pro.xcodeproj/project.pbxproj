@@ -52,6 +52,7 @@
 		4DCEBDF6201C927100F6A9CA /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEBDF5201C927100F6A9CA /* pch.swift */; };
 		A6948BBD201E102000B1E2AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6948BBC201E102000B1E2AA /* Extensions.swift */; };
 		A6948BBF201E1C4B00B1E2AA /* BBNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */; };
+		A698815A2026D5A800F40F60 /* YYText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A698815B2026D5A800F40F60 /* YYText.framework */; };
 		B2706C9F768E383E4E3036BD /* Pods_ZAKER_Pro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */; };
 		BD31C5A8680A3765ED0ABE22 /* Pods_ZAKER_ProUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169F05E5672D9E47EAAEFA3B /* Pods_ZAKER_ProUITests.framework */; };
 		E5A231E5DD9439A5AA727752 /* Pods_ZAKER_ProTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ECF9A8949721CFEB5361A3 /* Pods_ZAKER_ProTests.framework */; };
@@ -131,8 +132,11 @@
 		4DCEBDF5201C927100F6A9CA /* pch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pch.swift; sourceTree = "<group>"; };
 		6EA872BA2864FB7105C180D7 /* Pods-ZAKER ProUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER ProUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER ProUITests/Pods-ZAKER ProUITests.release.xcconfig"; sourceTree = "<group>"; };
 		862111B80BBC04D73EF5DEDC /* Pods-ZAKER Pro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER Pro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro.debug.xcconfig"; sourceTree = "<group>"; };
+		A68C938020260E40001FEF96 /* Zaker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zaker-Bridging-Header.h"; sourceTree = "<group>"; };
 		A6948BBC201E102000B1E2AA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBNavigationBar.swift; sourceTree = "<group>"; };
+		A69881592026D57F00F40F60 /* YYText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YYText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A698815B2026D5A800F40F60 /* YYText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YYText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8ECF9A8949721CFEB5361A3 /* Pods_ZAKER_ProTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAKER_ProTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A698815A2026D5A800F40F60 /* YYText.framework in Frameworks */,
 				B2706C9F768E383E4E3036BD /* Pods_ZAKER_Pro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +186,8 @@
 		3289BD4D73A061B5D6F1A95B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A698815B2026D5A800F40F60 /* YYText.framework */,
+				A69881592026D57F00F40F60 /* YYText.framework */,
 				D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */,
 				F8ECF9A8949721CFEB5361A3 /* Pods_ZAKER_ProTests.framework */,
 				169F05E5672D9E47EAAEFA3B /* Pods_ZAKER_ProUITests.framework */,
@@ -319,6 +326,7 @@
 		4DB234DA201B4DCE001A8DBE = {
 			isa = PBXGroup;
 			children = (
+				A68C938020260E40001FEF96 /* Zaker-Bridging-Header.h */,
 				4DB234E5201B4DCE001A8DBE /* ZAKER Pro */,
 				4DB234FA201B4DCF001A8DBE /* ZAKER ProTests */,
 				4DB23505201B4DCF001A8DBE /* ZAKER ProUITests */,
@@ -708,7 +716,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4044D8A008945CDC14BC72AD /* [CP] Embed Pods Frameworks */ = {
@@ -786,7 +794,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DD4D32D5612063D43EF33699 /* [CP] Check Pods Manifest.lock */ = {
@@ -804,7 +812,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FDBD1E63DFB070D58A685CBC /* [CP] Copy Pods Resources */ = {
@@ -1016,9 +1024,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GuoBin.ZAKER-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Zaker-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
 		};
@@ -1037,9 +1046,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GuoBin.ZAKER-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Zaker-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Release;
 		};

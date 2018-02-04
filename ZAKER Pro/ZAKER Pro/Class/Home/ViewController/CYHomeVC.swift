@@ -47,18 +47,8 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
             if response.error == nil {
                 let jsonData = JSON.init(response.data!)
                 print(jsonData["tid"])
-//                self.tidList = (jsonData["tid"] as? Array<Dictionary<String, Any>>)!
                 self.hotTableView.dataList = jsonData["tid"].arrayValue
             }
-            
-            
-//            if let JSON = response.result.value {
-//
-//                var dic = JSON as! Dictionary<String , Any>
-//                self.tidList = (dic["tid"] as? Array<Dictionary<String, Any>>)!
-//                self.hotTableView.dataList = self.tidList
-//
-//            }
         }
         
     }

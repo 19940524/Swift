@@ -72,5 +72,23 @@ extension UIView {
             return self.frame = CGRect(origin: self.frame.origin, size: newValue)
         }
     }
+    var centerY: CGFloat {
+        get {
+            return self.center.y
+        }
+        set {
+            self.center.y = newValue
+        }
+    }
+    
+    var centerX: CGFloat {
+        get {
+            return self.center.x
+        }
+        set {
+            self.center.x = newValue
+        }
+    }
+    
     
 }

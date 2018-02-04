@@ -27,6 +27,9 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         self.backgroundColor = UIColor.white
         self.separatorStyle = UITableViewCellSeparatorStyle.none
         self.register(HotOneImgCell.self, forCellReuseIdentifier: "HotOneImgCell")
+        self.register(HotThreeImgCell.self, forCellReuseIdentifier: "HotThreeImgCell")
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(HotTableView.receiverNotification), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,17 +37,39 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let params:JSON = dataList![indexPath.row]
+        if self.isThreeImg(params: params) {
+            let cell: HotThreeImgCell = tableView.dequeueReusableCell(withIdentifier: "HotThreeImgCell", for: indexPath) as! HotThreeImgCell
+            cell.setParams(par: dataList![indexPath.row])
+            return cell
+        }
+        
         let cell: HotOneImgCell = tableView.dequeueReusableCell(withIdentifier: "HotOneImgCell", for: indexPath) as! HotOneImgCell
         cell.setParams(par: dataList![indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return HotOneImgCell.cellHeight
+        let params:JSON = dataList![indexPath.row]
+        let three = self.isThreeImg(params: params)
+        if three {
+            return HotThreeImgCell.cellHeight(text: params["title"].string!)
+        }
+        return HotOneImgCell.cellHeight()
+    }
+    
+    func isThreeImg(params:JSON) -> Bool {
+        let imgs:Array<JSON>? = params["imgnewextra"].array
+        
+        if imgs?.count == 2 {
+            return true
+        }
+        return false
     }
     
     deinit {
         print("\(self) -> 释放了")
+        NotificationCenter.default.removeObserver(self)
     }
     
     

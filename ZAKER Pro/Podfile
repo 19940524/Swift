@@ -13,6 +13,8 @@ target 'ZAKER Pro' do
   pod 'Alamofire', '~> 4.5'
   pod 'AlamofireImage', '~> 3.3'
   pod 'SwiftyJSON'
+  pod 'YYText'
+  pod 'SwiftDate'
 
   target 'ZAKER ProTests' do
     inherit! :search_paths
