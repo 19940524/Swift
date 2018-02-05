@@ -50,6 +50,11 @@
 		4DCEBDEB201C30A800F6A9CA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDDF201C30A700F6A9CA /* iRate.bundle */; };
 		4DCEBDEC201C30A800F6A9CA /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDE0201C30A800F6A9CA /* AlipaySDK.bundle */; };
 		4DCEBDF6201C927100F6A9CA /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEBDF5201C927100F6A9CA /* pch.swift */; };
+		4DF9501D20283AD50075FBA8 /* CYCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9501C20283AD50075FBA8 /* CYCellModel.swift */; };
+		4DF9501F20283D210075FBA8 /* HotCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9501E20283D210075FBA8 /* HotCellModel.swift */; };
+		4DF9502120285AD20075FBA8 /* HotOneImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9502020285AD20075FBA8 /* HotOneImgCell.swift */; };
+		4DF9502320285AFD0075FBA8 /* HotThreeImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9502220285AFD0075FBA8 /* HotThreeImgCell.swift */; };
+		4DF95025202860490075FBA8 /* HotVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF95024202860490075FBA8 /* HotVideoCell.swift */; };
 		A6948BBD201E102000B1E2AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6948BBC201E102000B1E2AA /* Extensions.swift */; };
 		A6948BBF201E1C4B00B1E2AA /* BBNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */; };
 		A698815A2026D5A800F40F60 /* YYText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A698815B2026D5A800F40F60 /* YYText.framework */; };
@@ -130,6 +135,11 @@
 		4DCEBDDF201C30A700F6A9CA /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		4DCEBDE0201C30A800F6A9CA /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		4DCEBDF5201C927100F6A9CA /* pch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pch.swift; sourceTree = "<group>"; };
+		4DF9501C20283AD50075FBA8 /* CYCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYCellModel.swift; sourceTree = "<group>"; };
+		4DF9501E20283D210075FBA8 /* HotCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCellModel.swift; sourceTree = "<group>"; };
+		4DF9502020285AD20075FBA8 /* HotOneImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotOneImgCell.swift; sourceTree = "<group>"; };
+		4DF9502220285AFD0075FBA8 /* HotThreeImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotThreeImgCell.swift; sourceTree = "<group>"; };
+		4DF95024202860490075FBA8 /* HotVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotVideoCell.swift; sourceTree = "<group>"; };
 		6EA872BA2864FB7105C180D7 /* Pods-ZAKER ProUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER ProUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER ProUITests/Pods-ZAKER ProUITests.release.xcconfig"; sourceTree = "<group>"; };
 		862111B80BBC04D73EF5DEDC /* Pods-ZAKER Pro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAKER Pro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro.debug.xcconfig"; sourceTree = "<group>"; };
 		A68C938020260E40001FEF96 /* Zaker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zaker-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -405,6 +415,7 @@
 		4DB2355C201B4ED1001A8DBE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DF9501C20283AD50075FBA8 /* CYCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,6 +477,7 @@
 		4DB23582201B4F02001A8DBE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DF9501E20283D210075FBA8 /* HotCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -474,6 +486,9 @@
 			isa = PBXGroup;
 			children = (
 				4D73F0222025A78500FCCED6 /* HotBaseCell.swift */,
+				4DF9502020285AD20075FBA8 /* HotOneImgCell.swift */,
+				4DF9502220285AFD0075FBA8 /* HotThreeImgCell.swift */,
+				4DF95024202860490075FBA8 /* HotVideoCell.swift */,
 				4D4FA2402022FC5A005D39F3 /* HotTableView.swift */,
 				4D4FA244202301B0005D39F3 /* SubscribeTableView.swift */,
 				4D4FA24220230166005D39F3 /* LiveTableView.swift */,
@@ -846,12 +861,17 @@
 				4D4FA24320230166005D39F3 /* LiveTableView.swift in Sources */,
 				4D662F64201C128500330150 /* CYMeViewController.swift in Sources */,
 				4DB234E7201B4DCE001A8DBE /* AppDelegate.swift in Sources */,
+				4DF9502120285AD20075FBA8 /* HotOneImgCell.swift in Sources */,
+				4DF9501F20283D210075FBA8 /* HotCellModel.swift in Sources */,
 				4D4FA245202301B0005D39F3 /* SubscribeTableView.swift in Sources */,
 				4DB2357F201B4ED1001A8DBE /* CYViewController.swift in Sources */,
 				4DB23578201B4ED1001A8DBE /* CYTableView.swift in Sources */,
 				4D4FA2412022FC5A005D39F3 /* HotTableView.swift in Sources */,
 				4DB2357D201B4ED1001A8DBE /* CYTabBarController.swift in Sources */,
 				4DB23579201B4ED1001A8DBE /* CYTableViewCell.swift in Sources */,
+				4DF9501D20283AD50075FBA8 /* CYCellModel.swift in Sources */,
+				4DF9502320285AFD0075FBA8 /* HotThreeImgCell.swift in Sources */,
+				4DF95025202860490075FBA8 /* HotVideoCell.swift in Sources */,
 				A6948BBD201E102000B1E2AA /* Extensions.swift in Sources */,
 				4D84B6C0201B5D3C0091FEF6 /* CYVideoViewController.swift in Sources */,
 				4D32AF102022A73F00367CD3 /* CustomNavigationBar.swift in Sources */,

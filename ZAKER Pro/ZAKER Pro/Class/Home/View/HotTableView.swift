@@ -12,7 +12,7 @@ import SwiftyJSON
 // 20 22  107*71
 class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     
-    var dataList: Array<JSON>? = Array() {
+    var dataList: Array<HotCellModel>? = Array() {
         didSet {
             self.reloadData()
         }
@@ -29,7 +29,7 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         self.register(HotOneImgCell.self, forCellReuseIdentifier: "HotOneImgCell")
         self.register(HotThreeImgCell.self, forCellReuseIdentifier: "HotThreeImgCell")
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(HotTableView.receiverNotification), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HotTableView.receiverNotification), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,7 +37,10 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let params:JSON = dataList![indexPath.row]
+        let params:HotCellModel = dataList![indexPath.row]
+        
+//        判断是否是视频
+        
         if self.isThreeImg(params: params) {
             let cell: HotThreeImgCell = tableView.dequeueReusableCell(withIdentifier: "HotThreeImgCell", for: indexPath) as! HotThreeImgCell
             cell.setParams(par: dataList![indexPath.row])
@@ -50,16 +53,36 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let params:JSON = dataList![indexPath.row]
-        let three = self.isThreeImg(params: params)
-        if three {
-            return HotThreeImgCell.cellHeight(text: params["title"].string!)
-        }
-        return HotOneImgCell.cellHeight()
+        return self.calculCellHeight(indexPath: indexPath)
     }
     
-    func isThreeImg(params:JSON) -> Bool {
-        let imgs:Array<JSON>? = params["imgnewextra"].array
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.calculCellHeight(indexPath: indexPath)
+    }
+    
+    func calculCellHeight(indexPath: IndexPath) -> CGFloat {
+
+        let params:HotCellModel = dataList![indexPath.row]
+
+        let three = self.isThreeImg(params: params)
+        
+        let cellHeight = params.cellHeight
+        if cellHeight == nil {
+            var newHeight: CGFloat
+            if three {
+                newHeight = HotThreeImgCell.cellHeight(text: params.title!)
+            } else {
+                newHeight = HotOneImgCell.cellHeight()
+            }
+            params.cellHeight = newHeight
+            return newHeight
+        }
+        
+        return cellHeight!
+    }
+    
+    func isThreeImg(params: HotCellModel) -> Bool {
+        let imgs:Array<String>? = params.imgnewextra
         
         if imgs?.count == 2 {
             return true
@@ -73,7 +96,11 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     }
     
     
-    
+    @objc func receiverNotification() {
+        self.beginUpdates()
+        self.reloadData()
+        self.endUpdates()
+    }
     
     
     

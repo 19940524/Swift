@@ -47,7 +47,13 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
             if response.error == nil {
                 let jsonData = JSON.init(response.data!)
                 print(jsonData["tid"])
-                self.hotTableView.dataList = jsonData["tid"].arrayValue
+                var newList: Array<HotCellModel> = Array()
+                for params in jsonData["tid"].arrayValue {
+                    let model:HotCellModel = HotCellModel()
+                    model.setParams(params: params)
+                    newList.append(model)
+                }
+                self.hotTableView.dataList = newList
             }
         }
         
@@ -59,6 +65,32 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
     }
     
     @objc func searchEvent() {
+        
+        
+        var list:Array = [["name":"小三","age":"18"],["name":"小六","age":"16"],["name":"小五","age":"17"]]
+        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[0] as AnyObject).toOpaque())")
+        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[1] as AnyObject).toOpaque())")
+        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[2] as AnyObject).toOpaque())")
+        
+        var s: Dictionary = list[0]
+        var l: Dictionary = list[1]
+        var w: Dictionary = list[2]
+        
+        print("s 内存 ---> \(Unmanaged<AnyObject>.passUnretained(s as AnyObject).toOpaque())")
+        print("l 内存 ---> \(Unmanaged<AnyObject>.passUnretained(l as AnyObject).toOpaque())")
+        print("w 内存 ---> \(Unmanaged<AnyObject>.passUnretained(w as AnyObject).toOpaque())")
+        
+        s["age"] = "19";
+        l["age"] = "17";
+        w["age"] = "18";
+        
+        print("s 内存 ---> \(Unmanaged<AnyObject>.passUnretained(s as AnyObject).toOpaque())")
+        print("l 内存 ---> \(Unmanaged<AnyObject>.passUnretained(l as AnyObject).toOpaque())")
+        print("w 内存 ---> \(Unmanaged<AnyObject>.passUnretained(w as AnyObject).toOpaque())")
+        
+        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[0] as AnyObject).toOpaque())")
+        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[1] as AnyObject).toOpaque())")
+        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[2] as AnyObject).toOpaque())")
         
     }
     

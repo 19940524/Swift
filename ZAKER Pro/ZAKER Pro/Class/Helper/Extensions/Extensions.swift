@@ -41,7 +41,7 @@ struct CalculateText {
         let labelSize = text.boundingRect(with: CGSize(width: width,height: font.lineHeight*2+10),
                                           options: .usesLineFragmentOrigin,
                                           attributes: [NSAttributedStringKey.font: font], context: nil)
-        return labelSize.height+10;
+        return labelSize.height+8;
     }
     static func width(height: CGFloat,text: String,font: UIFont) -> CGFloat {
         let labelSize = text.boundingRect(with: CGSize(width: max,height: height),
