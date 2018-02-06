@@ -82,8 +82,8 @@ class HotThreeImgCell: HotBaseCell {
         self.soucreLabel.frame = sourceFrame!
         
         self.subTitleLabel.left = self.soucreLabel.right + self.sToT_sp
-        self.subTitleLabel.size = CGSize(width: 100, height: 20)
-        self.subTitleLabel.centerY = self.soucreLabel.centerY
+        self.subTitleLabel.size = CalculateText.attSize(text: (params?.subTitle)!, width: 300)
+        self.subTitleLabel.bottom = self.soucreLabel.bottom
         
         self.imageView1.frame = CGRect(x: self.t_left, y: self.soucreLabel.bottom + CY_OFFSET.height(h: 12), width: self.img_w, height: self.img_h)
         self.imageView2.frame = CGRect(x: self.t_left+self.img_sp+self.img_w, y: self.imageView1.top, width: self.img_w, height: self.img_h)
@@ -97,7 +97,7 @@ class HotThreeImgCell: HotBaseCell {
         let imgW: CGFloat = (71.0 / 107.0 * (tW - imgI) / 3)
         let topB: CGFloat = CY_OFFSET.height(h: 22) * 2 + 1
         let tH: CGFloat = CalculateText.height(width: tW, text: text, font: hcTitleFont)
-        let cellHeight =  tH + CY_OFFSET.height(h: 15) + 20 + imgW + topB
+        let cellHeight =  tH + CY_OFFSET.height(h: 30) + imgW + topB
         return cellHeight
     }
     

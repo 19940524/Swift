@@ -15,6 +15,7 @@ target 'ZAKER Pro' do
   pod 'SwiftyJSON'
   pod 'YYText'
   pod 'SwiftDate'
+  pod "ESPullToRefresh"
 
   target 'ZAKER ProTests' do
     inherit! :search_paths

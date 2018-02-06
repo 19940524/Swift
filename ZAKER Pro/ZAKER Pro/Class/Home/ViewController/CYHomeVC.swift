@@ -46,7 +46,7 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
             print(response.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
             if response.error == nil {
                 let jsonData = JSON.init(response.data!)
-                print(jsonData["tid"])
+//                print(jsonData["tid"])
                 var newList: Array<HotCellModel> = Array()
                 for params in jsonData["tid"].arrayValue {
                     let model:HotCellModel = HotCellModel()

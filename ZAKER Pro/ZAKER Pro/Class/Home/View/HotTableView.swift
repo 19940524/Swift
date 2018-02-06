@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import ESPullToRefresh
 
 // 20 22  107*71
 class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
@@ -28,8 +29,21 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         self.separatorStyle = UITableViewCellSeparatorStyle.none
         self.register(HotOneImgCell.self, forCellReuseIdentifier: "HotOneImgCell")
         self.register(HotThreeImgCell.self, forCellReuseIdentifier: "HotThreeImgCell")
+        self.register(HotVideoCell.self, forCellReuseIdentifier: "HotVideoCell")
+        
+        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        header = HotRefreshHeaderAnimator(frame: CGRect.zero)
+        self.es.addPullToRefresh(animator: header) { [weak self] in
+            self?.refresh()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(HotTableView.receiverNotification), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    private func refresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.es.stopPullToRefresh()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,16 +54,21 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         let params:HotCellModel = dataList![indexPath.row]
         
 //        判断是否是视频
-        
-        if self.isThreeImg(params: params) {
-            let cell: HotThreeImgCell = tableView.dequeueReusableCell(withIdentifier: "HotThreeImgCell", for: indexPath) as! HotThreeImgCell
+        if params.boardid == "video_bbs" {
+            let cell: HotVideoCell = tableView.dequeueReusableCell(withIdentifier: "HotVideoCell", for: indexPath) as! HotVideoCell
             cell.setParams(par: dataList![indexPath.row])
             return cell
+        } else {
+            if self.isThreeImg(params: params) {
+                let cell: HotThreeImgCell = tableView.dequeueReusableCell(withIdentifier: "HotThreeImgCell", for: indexPath) as! HotThreeImgCell
+                cell.setParams(par: dataList![indexPath.row])
+                return cell
+            } else {
+                let cell: HotOneImgCell = tableView.dequeueReusableCell(withIdentifier: "HotOneImgCell", for: indexPath) as! HotOneImgCell
+                cell.setParams(par: dataList![indexPath.row])
+                return cell
+            }
         }
-        
-        let cell: HotOneImgCell = tableView.dequeueReusableCell(withIdentifier: "HotOneImgCell", for: indexPath) as! HotOneImgCell
-        cell.setParams(par: dataList![indexPath.row])
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -60,6 +79,7 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         return self.calculCellHeight(indexPath: indexPath)
     }
     
+    // 计算cell高度
     func calculCellHeight(indexPath: IndexPath) -> CGFloat {
 
         let params:HotCellModel = dataList![indexPath.row]
@@ -67,12 +87,18 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         let three = self.isThreeImg(params: params)
         
         let cellHeight = params.cellHeight
+        
         if cellHeight == nil {
             var newHeight: CGFloat
-            if three {
-                newHeight = HotThreeImgCell.cellHeight(text: params.title!)
+            
+            if params.boardid == "video_bbs" {
+                newHeight = HotVideoCell.cellHeight(text: params.title!)
             } else {
-                newHeight = HotOneImgCell.cellHeight()
+                if three {
+                    newHeight = HotThreeImgCell.cellHeight(text: params.title!)
+                } else {
+                    newHeight = HotOneImgCell.cellHeight()
+                }
             }
             params.cellHeight = newHeight
             return newHeight
@@ -83,11 +109,35 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     
     func isThreeImg(params: HotCellModel) -> Bool {
         let imgs:Array<String>? = params.imgnewextra
-        
         if imgs?.count == 2 {
             return true
         }
         return false
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let params:HotCellModel = dataList![indexPath.row]
+        if !params.firstShow {
+            for view in cell.contentView.subviews {
+                if view.isMember(of: CYImageView.self) {
+                    view.alpha = 0
+                    
+                    let time:Double = Double(Random.range(from: 1..<4)) / 10.0
+                    
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: {
+                        UIView.animate(withDuration: 0.25, animations: {
+                            view.alpha = 1
+                        })
+                        params.firstShow = true
+                    })
+                }
+            }
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
     }
     
     deinit {

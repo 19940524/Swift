@@ -50,6 +50,8 @@
 		4DCEBDEB201C30A800F6A9CA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDDF201C30A700F6A9CA /* iRate.bundle */; };
 		4DCEBDEC201C30A800F6A9CA /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDE0201C30A800F6A9CA /* AlipaySDK.bundle */; };
 		4DCEBDF6201C927100F6A9CA /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEBDF5201C927100F6A9CA /* pch.swift */; };
+		4DF878CF202980B900336E6C /* HotRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF878CE202980B900336E6C /* HotRefreshHeaderAnimator.swift */; };
+		4DF878D1202987A900336E6C /* CYColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF878D0202987A900336E6C /* CYColor.swift */; };
 		4DF9501D20283AD50075FBA8 /* CYCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9501C20283AD50075FBA8 /* CYCellModel.swift */; };
 		4DF9501F20283D210075FBA8 /* HotCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9501E20283D210075FBA8 /* HotCellModel.swift */; };
 		4DF9502120285AD20075FBA8 /* HotOneImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9502020285AD20075FBA8 /* HotOneImgCell.swift */; };
@@ -135,6 +137,8 @@
 		4DCEBDDF201C30A700F6A9CA /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		4DCEBDE0201C30A800F6A9CA /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		4DCEBDF5201C927100F6A9CA /* pch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pch.swift; sourceTree = "<group>"; };
+		4DF878CE202980B900336E6C /* HotRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
+		4DF878D0202987A900336E6C /* CYColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYColor.swift; sourceTree = "<group>"; };
 		4DF9501C20283AD50075FBA8 /* CYCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYCellModel.swift; sourceTree = "<group>"; };
 		4DF9501E20283D210075FBA8 /* HotCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCellModel.swift; sourceTree = "<group>"; };
 		4DF9502020285AD20075FBA8 /* HotOneImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotOneImgCell.swift; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 				4D4FA244202301B0005D39F3 /* SubscribeTableView.swift */,
 				4D4FA24220230166005D39F3 /* LiveTableView.swift */,
 				4D307D522023133A00F0B39F /* TopMenuView.swift */,
+				4DF878CE202980B900336E6C /* HotRefreshHeaderAnimator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				A6948BBC201E102000B1E2AA /* Extensions.swift */,
 				4D32AF0F2022A73F00367CD3 /* CustomNavigationBar.swift */,
 				4D4FA23E2022F9ED005D39F3 /* ViewOffset.swift */,
+				4DF878D0202987A900336E6C /* CYColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -701,15 +707,21 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZAKER Pro/Pods-ZAKER Pro-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -731,7 +743,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4044D8A008945CDC14BC72AD /* [CP] Embed Pods Frameworks */ = {
@@ -809,7 +821,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD4D32D5612063D43EF33699 /* [CP] Check Pods Manifest.lock */ = {
@@ -827,7 +839,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDBD1E63DFB070D58A685CBC /* [CP] Copy Pods Resources */ = {
@@ -858,6 +870,7 @@
 				4DB23577201B4ED1001A8DBE /* CYScrollView.swift in Sources */,
 				4DB23574201B4ED1001A8DBE /* CYCollectionViewCell.swift in Sources */,
 				4D4FA23F2022F9ED005D39F3 /* ViewOffset.swift in Sources */,
+				4DF878D1202987A900336E6C /* CYColor.swift in Sources */,
 				4D4FA24320230166005D39F3 /* LiveTableView.swift in Sources */,
 				4D662F64201C128500330150 /* CYMeViewController.swift in Sources */,
 				4DB234E7201B4DCE001A8DBE /* AppDelegate.swift in Sources */,
@@ -887,6 +900,7 @@
 				4DB2357C201B4ED1001A8DBE /* CYNavigationController.swift in Sources */,
 				4DB2357E201B4ED1001A8DBE /* CYTableViewController.swift in Sources */,
 				4DCEBDF6201C927100F6A9CA /* pch.swift in Sources */,
+				4DF878CF202980B900336E6C /* HotRefreshHeaderAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Darwin
 
+// 获取字体
 struct CY_FONT {
     static func SFUIText(size: CGFloat) -> UIFont? {
         return UIFont(name: ".SFUIText-Semibold", size: size)
@@ -34,6 +36,7 @@ struct CY_OFFSET {
     }
 }
 
+// 计算文本大小
 private let max: CGFloat = 999999.0
 struct CalculateText {
     
@@ -56,10 +59,23 @@ struct CalculateText {
                                                   attributes: [NSAttributedStringKey.font: font], context: nil).size
         return labelSize
     }
+    
+    static func attSize(text: NSAttributedString,width: CGFloat) -> CGSize {
+        let size: CGSize = text.boundingRect(with: CGSize(width: width,height:max), options: .usesLineFragmentOrigin, context: nil).size
+        return size
+    }
+}
+
+struct Random {
+    static func range(from range: Range<Int>) -> Int {
+        let distance = range.upperBound - range.lowerBound
+        let rnd = arc4random_uniform(UInt32(distance))
+        return range.lowerBound + Int(rnd)
+    }
 }
 
 
-
+// 设备判断
 class CYDevice {
     // 判断是否iPhone X
     static func isX() -> Bool {

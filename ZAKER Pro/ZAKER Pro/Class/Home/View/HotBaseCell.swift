@@ -42,21 +42,24 @@ class HotBaseCell: CYTableViewCell {
     var bigImg_w: CGFloat {
         get { return CYDevice.width() - CY_OFFSET.width(w: 20) * 2 }
     }
+    var bigImg_h: CGFloat {
+        get { return 9.0 / 16.0 * self.bigImg_w }
+    }
     var titleTop: CGFloat {
         get { return CY_OFFSET.height(h: 24) }
     }
     var sToT_sp: CGFloat {
-        get { return CY_OFFSET.height(h: 8) }
+        get { return CY_OFFSET.height(h: 5) }
     }
     
-    lazy var soucreLabel = { () -> YYLabel in
+    lazy var soucreLabel: YYLabel = { () -> YYLabel in
         let label = YYLabel()
         label.displaysAsynchronously = true
         label.textColor     = hcSubTitleColor
         label.font          = CY_FONT.system(size: 10)
         return label
     }()
-    lazy var titleLabel = { () -> YYLabel in
+    lazy var titleLabel: YYLabel = { () -> YYLabel in
         let label = YYLabel()
         label.displaysAsynchronously = true
         label.numberOfLines = 2
@@ -64,15 +67,16 @@ class HotBaseCell: CYTableViewCell {
         label.font          = hcTitleFont
         return label
     }()
-    lazy var subTitleLabel = { () -> YYLabel in
-        let label = YYLabel()
-        label.displaysAsynchronously = true
+    lazy var subTitleLabel = { () -> CYLabel in
+        let label = CYLabel()
+//        label.displaysAsynchronously = true
         label.font          = CY_FONT.system(size: 10)
         return label
     }()
-    lazy var coverImage = { () -> UIImageView in
-        let imageView = UIImageView()
+    lazy var coverImage: CYImageView = { () -> CYImageView in
+        let imageView = CYImageView()
         imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -108,5 +112,17 @@ class HotBaseCell: CYTableViewCell {
             filter: filter
         )
 //        imageViwe.af_setImage(withURL: url)
+    }
+    
+    func setImage(imageViwe: UIImageView,url: URL,size: CGSize) {
+        let filter = AspectScaledToFillSizeWithRoundedCornersFilter (
+            size: size,
+            radius: 3.5
+        )
+        imageViwe.af_setImage(
+            withURL: url,
+            placeholderImage: UIImage(named: "article_html_content_loading"),
+            filter: filter
+        )
     }
 }

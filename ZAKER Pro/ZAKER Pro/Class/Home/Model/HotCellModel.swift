@@ -31,7 +31,7 @@ class HotCellModel: CYCellModel {
     func setParams(params:JSON) {
         
         for (key,value) in params {
-            print(key,value)
+//            print(key,value)
             if key == "title" {
                 title = value.string
                 continue
@@ -77,12 +77,20 @@ class HotCellModel: CYCellModel {
         }
         if replyCount != nil {
             if Int(replyCount!) == 0 {
-                self.setTimeText(time: self.ptime)
+                if self.ptime == nil {
+                    self.subTitle = NSMutableAttributedString(string: "刚刚")
+                } else {
+                    self.setTimeText(time: self.ptime)
+                }
             } else {
                 self.setReplyText(reply: self.replyCount!)
             }
         } else {
-            self.setTimeText(time: self.ptime)
+            if self.ptime == nil {
+                self.subTitle = NSMutableAttributedString(string: "刚刚")
+            } else {
+                self.setTimeText(time: self.ptime)
+            }
         }
         
     }

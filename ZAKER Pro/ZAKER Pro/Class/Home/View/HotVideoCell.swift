@@ -37,7 +37,7 @@ class HotVideoCell: HotBaseCell {
         self.soucreLabel.text = par?.source
         
         let url = URL(string:  (par?.img!)!)
-        self.setImage(imageViwe: self.coverImage, url: url!)
+        self.setImage(imageViwe: self.coverImage, url: url!,size: CGSize(width: self.bigImg_w, height: self.bigImg_h))
         
         self.subTitleLabel.attributedText = par?.subTitle
     }
@@ -64,8 +64,8 @@ class HotVideoCell: HotBaseCell {
         self.soucreLabel.frame = sourceFrame!
         
         self.subTitleLabel.left = self.soucreLabel.right + self.sToT_sp
-        self.subTitleLabel.size = CGSize(width: 100, height: 20)
-        self.subTitleLabel.centerY = self.soucreLabel.centerY
+        self.subTitleLabel.size = CalculateText.attSize(text: (params?.subTitle)!, width: 300)
+        self.subTitleLabel.bottom = self.soucreLabel.bottom
         
         self.coverImage.frame = CGRect(x: self.t_left, y: self.subTitleLabel.bottom + CY_OFFSET.height(h: 8), width: self.bigImg_w, height: 9.0 / 16.0 * self.bigImg_w)
         
@@ -77,7 +77,7 @@ class HotVideoCell: HotBaseCell {
         let imgH: CGFloat = 9.0 / 16.0 * tW
         let topB: CGFloat = CY_OFFSET.height(h: 22) * 2 + 1
         let tH: CGFloat = CalculateText.height(width: tW, text: text, font: hcTitleFont)
-        let cellHeight =  tH + CY_OFFSET.height(h: 15) + 20 + imgH + topB
+        let cellHeight =  tH + CY_OFFSET.height(h: 23) + imgH + topB
         return cellHeight
     }
 

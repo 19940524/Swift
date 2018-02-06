@@ -131,6 +131,8 @@ class CYCellModel: NSObject,isP {
     private var pStandbyFrame    : CGRect?
     private var lStandbyFrame    : CGRect?
     
+    var firstShow   : Bool = false  // 第一次显示
+    var isClick     : Bool = false  // 是否点击过
     
     override init() {
         super.init()

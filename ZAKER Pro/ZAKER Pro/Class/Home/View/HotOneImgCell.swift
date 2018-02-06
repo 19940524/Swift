@@ -69,7 +69,7 @@ class HotOneImgCell: HotBaseCell {
         self.soucreLabel.frame = sourceFrame!
         
         self.subTitleLabel.left = self.soucreLabel.right + self.sToT_sp
-        self.subTitleLabel.size = CGSize(width: 100, height: 20)
-        self.subTitleLabel.centerY = self.soucreLabel.centerY
+        self.subTitleLabel.size = CalculateText.attSize(text: (params?.subTitle)!, width: 300)
+        self.subTitleLabel.bottom = self.soucreLabel.bottom
     }
 }
