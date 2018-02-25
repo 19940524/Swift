@@ -13,7 +13,7 @@ import SwiftyJSON
 import YYText
 import SwiftDate
 
-public let hcTitleFont: UIFont = CY_FONT.SFUITextAuto(size: 16.5)!
+public let hcTitleFont: UIFont = CYFont.SFUITextAuto(size: 16.5)!
 
 public let hcTitleColor: UIColor = TEXT_COLOR
 public let hcSubTitleColor: UIColor = SUB_TEXT_COLOR
@@ -56,7 +56,7 @@ class HotBaseCell: CYTableViewCell {
         let label = YYLabel()
         label.displaysAsynchronously = true
         label.textColor     = hcSubTitleColor
-        label.font          = CY_FONT.system(size: 10)
+        label.font          = CYFont.system(size: 10)
         return label
     }()
     lazy var titleLabel: YYLabel = { () -> YYLabel in
@@ -70,7 +70,7 @@ class HotBaseCell: CYTableViewCell {
     lazy var subTitleLabel = { () -> CYLabel in
         let label = CYLabel()
 //        label.displaysAsynchronously = true
-        label.font          = CY_FONT.system(size: 10)
+        label.font          = CYFont.system(size: 10)
         return label
     }()
     lazy var coverImage: CYImageView = { () -> CYImageView in

@@ -10,6 +10,10 @@ import UIKit
 import SwiftyJSON
 import ESPullToRefresh
 
+protocol HotTableViewDelegate: class {
+    func promptEvent(text: String)
+}
+
 // 20 22  107*71
 class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     
@@ -18,6 +22,9 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
             self.reloadData()
         }
     }
+    
+    var fn: Int = 0
+    weak var hotDelegate: HotTableViewDelegate?
     
     override init(frame: CGRect, style: UITableViewStyle) {
         
@@ -37,12 +44,66 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
             self?.refresh()
         }
         
+        let footer:HotRefreshFooterAnimator = HotRefreshFooterAnimator(frame: CGRect.zero)
+    
+        self.es.addInfiniteScrolling(animator: footer) { [weak self] in
+            self?.loadingMore()
+        }
+       
+        
         NotificationCenter.default.addObserver(self, selector: #selector(HotTableView.receiverNotification), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        self.refresh()
+        
     }
     
     private func refresh() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        
+        HotHandler.GETHotHData(fn: fn, success: { (json) in
+            
+            var newList: Array<HotCellModel> = Array()
+            let jsonData = JSON.init(json)
+            for params in jsonData["tid"].arrayValue {
+                let model:HotCellModel = HotCellModel()
+                model.setParams(params: params)
+                newList.append(model)
+            }
+            
+            if self.dataList!.count > 0 {
+                self.dataList?.remove(at: 0)
+            }
+            
+            self.dataList?.insert(contentsOf: newList, at: 0)
             self.es.stopPullToRefresh()
+            self.fn += 1
+            
+            let model:HotCellModel = (self.dataList?.first)!
+            if model.prompt != nil {
+                self.hotDelegate?.promptEvent(text: model.prompt!)
+            }
+            
+        }) { (json) in
+            self.es.stopPullToRefresh()
+        }
+    }
+    
+    private func loadingMore() {
+        let offset: Int = (self.dataList?.count)!
+        HotHandler.GETHotFData(offset: offset, fn: fn, success: { (json) in
+           
+            var newList: Array<HotCellModel> = Array()
+            let jsonData = JSON.init(json)
+            for params in jsonData["tid"].arrayValue {
+                let model:HotCellModel = HotCellModel()
+                model.setParams(params: params)
+                newList.append(model)
+            }
+            self.dataList?.append(contentsOf: newList)
+            
+            
+            self.es.stopLoadingMore()
+        }) { (json) in
+            self.es.stopLoadingMore()
         }
     }
     
@@ -116,28 +177,15 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let params:HotCellModel = dataList![indexPath.row]
-        if !params.firstShow {
-            for view in cell.contentView.subviews {
-                if view.isMember(of: CYImageView.self) {
-                    view.alpha = 0
-                    
-                    let time:Double = Double(Random.range(from: 1..<4)) / 10.0
-                    
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: {
-                        UIView.animate(withDuration: 0.25, animations: {
-                            view.alpha = 1
-                        })
-                        params.firstShow = true
-                    })
-                }
-            }
-            
-        }
+
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("scr = \(scrollView.contentOffset.y)")
     }
     
     deinit {

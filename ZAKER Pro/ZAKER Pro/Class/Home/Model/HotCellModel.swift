@@ -22,7 +22,7 @@ class HotCellModel: CYCellModel {
     var imgnewextra : Array<String>?
     var boardid     : String?       // photoview_bbs  图集 news2_bbs       新闻 video_bbs      视频 dy_wemedia_bbs  新闻
     var digest      : String?       // 描述
-    
+    var isShowTime  : Bool?
     
     override init() {
         super.init()
@@ -79,6 +79,7 @@ class HotCellModel: CYCellModel {
             if Int(replyCount!) == 0 {
                 if self.ptime == nil {
                     self.subTitle = NSMutableAttributedString(string: "刚刚")
+                    isShowTime = true
                 } else {
                     self.setTimeText(time: self.ptime)
                 }
@@ -97,6 +98,8 @@ class HotCellModel: CYCellModel {
     
     // 设置时间
     func setTimeText(time: String?) {
+        isShowTime = true
+        
         if time == nil {
             self.subTitle = nil
             return
@@ -111,18 +114,19 @@ class HotCellModel: CYCellModel {
         let text: NSMutableAttributedString = NSMutableAttributedString(string: dateTime)
         let range: NSRange = NSRange(location: 0, length: text.string.count)
         text.yy_setColor(hcSubTitleColor, range:  range)
-        text.yy_setFont(CY_FONT.system(size: 10), range: range)
+        text.yy_setFont(CYFont.system(size: 10), range: range)
         self.subTitle = text
     }
     // 设置评论
     func setReplyText(reply: String) {
+        isShowTime = false
         let text: NSMutableAttributedString = NSMutableAttributedString(string: "\(reply)评论")
         var range: NSRange = NSRange(location: text.string.count-2, length: 2)
         text.yy_setColor(hcTitleColor, range:  range)
-        text.yy_setFont(CY_FONT.system(size: 12), range: range)
+        text.yy_setFont(CYFont.system(size: 12), range: range)
         let countStr: String = "\(reply)"
         range = NSRange(location: 0, length: countStr.count)
-        text.yy_setFont(CY_FONT.system(size: 10), range: range)
+        text.yy_setFont(CYFont.system(size: 10), range: range)
         self.subTitle = text
     }
     

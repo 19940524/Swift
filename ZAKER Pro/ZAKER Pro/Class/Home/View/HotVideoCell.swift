@@ -66,6 +66,7 @@ class HotVideoCell: HotBaseCell {
         self.subTitleLabel.left = self.soucreLabel.right + self.sToT_sp
         self.subTitleLabel.size = CalculateText.attSize(text: (params?.subTitle)!, width: 300)
         self.subTitleLabel.bottom = self.soucreLabel.bottom
+        self.subTitleLabel.bottom -= (self.params?.isShowTime)! ? 1.5 : 0
         
         self.coverImage.frame = CGRect(x: self.t_left, y: self.subTitleLabel.bottom + CY_OFFSET.height(h: 8), width: self.bigImg_w, height: 9.0 / 16.0 * self.bigImg_w)
         

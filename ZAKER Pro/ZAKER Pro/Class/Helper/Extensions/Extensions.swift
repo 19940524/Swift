@@ -9,8 +9,19 @@
 import UIKit
 import Darwin
 
+struct Conversion {
+    /// 弧度转角度
+    static func radiansToDegrees(radians: CGFloat) -> CGFloat {
+        return (radians * 180.0 / CGFloat(Double.pi))
+    }
+    /// 角度转弧度
+    static func degreesToRadians(angle: CGFloat) -> CGFloat {
+        return (angle / 180.0 * CGFloat(Double.pi))
+    }
+}
+
 // 获取字体
-struct CY_FONT {
+struct CYFont {
     static func SFUIText(size: CGFloat) -> UIFont? {
         return UIFont(name: ".SFUIText-Semibold", size: size)
     }
@@ -66,6 +77,8 @@ struct CalculateText {
     }
 }
 
+
+/// 指定范围随机数
 struct Random {
     static func range(from range: Range<Int>) -> Int {
         let distance = range.upperBound - range.lowerBound
@@ -86,15 +99,15 @@ class CYDevice {
     }
     // 判断是否竖屏
     static func isPortrait() -> Bool {
-        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-            
-            return false
-        }
-        
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             return true
         }
-        return false
+        
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+            return false
+        } else {
+            return self.width() < self.height() ? true : false
+        }
     }
     // 屏幕宽度
     static func width() -> CGFloat {

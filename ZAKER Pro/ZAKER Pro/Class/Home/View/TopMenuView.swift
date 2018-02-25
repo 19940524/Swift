@@ -43,7 +43,7 @@ class TopMenuView: CYView {
     
     func setButton(button: UIButton, tag: Int, title: String) {
         button.tag = tag
-        button.titleLabel?.font = CY_FONT.SFUIText(size: 16.0)
+        button.titleLabel?.font = CYFont.SFUIText(size: 16.0)
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.setTitleColor(NAV_COLOR, for: .selected)

@@ -10,20 +10,29 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
+class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate,HotTableViewDelegate {
 
     private let scrollView    = UIScrollView()
     private let hotTableView  = HotTableView(frame: CGRect(), style: .plain)
-    private let subTableView  = SubscribeTableView(frame: CGRect(), style: .plain)
+    private let subCollectionView  = SubscribeCollectionView(frame: CGRect(x: CYDevice.width(),
+                                                                           y: 0,
+                                                                           width: CYDevice.width(),
+                                                                           height: CYDevice.height() - CYDevice.navigation_h() - CYDevice.tabbar_h()))
     private let liveTableView = LiveTableView(frame: CGRect(), style: .plain)
     private let topMenuView   = TopMenuView()
-    private let hotUrl        = "https://c.m.163.com/recommend/getSubDocPic?from=toutiao&prog=Rpic2&open=&openpath=&passport=WznDdjHz22nrm57NxuzNqZ2WxSDQJdPl%2BJwBqzUqSejL2AgtwrES0PPiPHJrLH2UePBK0dNsyevylzp8V9OOiA%3D%3D&devId=JmnpPZswyTEcbyrMfmsPJVb%2B/H3cH95XF1nu8XmVs9FL6BGnxStm2K1yNLf5aRZn&version=32.0&spever=false&net=wifi&lat=&lon=&ts=1517570676&sign=LDiDqDKIv5U27gW/1UAmU4OxFktUXUk7ZShaI7feJe548ErR02zJ6/KXOnxX046I&encryption=1&canal=appstore&offset=0&size=10&fn=0&spestr=shortnews"
-    private var tidList: Array<Dictionary<String, Any>>?
     
-//    var currentIndex = 0
+    lazy var promptView: PromptView = { () -> PromptView in
+        let view = PromptView.init(frame: CGRect(x: self.view.width/2 - 180/2, y: 0, width: 180, height: 35))
+        view.alpha = 0
+        self.view.addSubview(view)
+        return view
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         self.createNavigationBar(name: "ExploreSearchButton", rightSel: #selector(CYHomeVC.searchEvent))
         topMenuView.delegate = self
@@ -34,28 +43,10 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
         scrollView.isPagingEnabled = true
         self.view.addSubview(scrollView)
         
+        hotTableView.hotDelegate = self
         scrollView.addSubview(hotTableView)
-        scrollView.addSubview(subTableView)
+        scrollView.addSubview(subCollectionView)
         scrollView.addSubview(liveTableView)
-        
-        // 网络暂时这样写 以后自己写
-        Alamofire.request("\(hotUrl)/get").responseJSON { response in
-//            print(response.request!)  // 原始的URL请求
-//            print(response.response ?? "response error") // HTTP URL响应
-//            print(response.data ?? "error")     // 服务器返回的数据
-            print(response.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
-            if response.error == nil {
-                let jsonData = JSON.init(response.data!)
-//                print(jsonData["tid"])
-                var newList: Array<HotCellModel> = Array()
-                for params in jsonData["tid"].arrayValue {
-                    let model:HotCellModel = HotCellModel()
-                    model.setParams(params: params)
-                    newList.append(model)
-                }
-                self.hotTableView.dataList = newList
-            }
-        }
         
     }
 
@@ -65,33 +56,8 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
     }
     
     @objc func searchEvent() {
-        
-        
         var list:Array = [["name":"小三","age":"18"],["name":"小六","age":"16"],["name":"小五","age":"17"]]
         print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[0] as AnyObject).toOpaque())")
-        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[1] as AnyObject).toOpaque())")
-        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[2] as AnyObject).toOpaque())")
-        
-        var s: Dictionary = list[0]
-        var l: Dictionary = list[1]
-        var w: Dictionary = list[2]
-        
-        print("s 内存 ---> \(Unmanaged<AnyObject>.passUnretained(s as AnyObject).toOpaque())")
-        print("l 内存 ---> \(Unmanaged<AnyObject>.passUnretained(l as AnyObject).toOpaque())")
-        print("w 内存 ---> \(Unmanaged<AnyObject>.passUnretained(w as AnyObject).toOpaque())")
-        
-        s["age"] = "19";
-        l["age"] = "17";
-        w["age"] = "18";
-        
-        print("s 内存 ---> \(Unmanaged<AnyObject>.passUnretained(s as AnyObject).toOpaque())")
-        print("l 内存 ---> \(Unmanaged<AnyObject>.passUnretained(l as AnyObject).toOpaque())")
-        print("w 内存 ---> \(Unmanaged<AnyObject>.passUnretained(w as AnyObject).toOpaque())")
-        
-        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[0] as AnyObject).toOpaque())")
-        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[1] as AnyObject).toOpaque())")
-        print(" 内存 ---> \(Unmanaged<AnyObject>.passUnretained(list[2] as AnyObject).toOpaque())")
-        
     }
     
     
@@ -107,22 +73,44 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
                                   width: view.width,
                                   height: CYDevice.height() - (bbNavigationBar?.height)! - CYDevice.tabbar_h())
         
-        scrollView.contentSize = CGSize(width: scrollView.width * 3, height: scrollView.height)
+        scrollView.contentSize = CGSize(width: scrollView.width * 3, height: 0)
         
         hotTableView.frame = CGRect(x: 0, y: 0, width: scrollView.width, height: scrollView.height)
-        subTableView.frame = CGRect(x: scrollView.width, y: 0, width: scrollView.width, height: scrollView.height)
+        subCollectionView.frame = CGRect(x: scrollView.width, y: 0, width: scrollView.width, height: scrollView.height)
         liveTableView.frame = CGRect(x: scrollView.width * 2, y: 0, width: scrollView.width, height: scrollView.height)
 
         scrollView.setContentOffset(CGPoint(x: CGFloat(topMenuView.currentIndex) * scrollView.width, y: 0), animated: false)
         
+        self.view.bringSubview(toFront: self.bbNavigationBar!)
     }
     
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         topMenuView.setOffset(x: scrollView.contentOffset.x / scrollView.width)
+        print(scrollView)
     }
     
+    // 提示加载语
+    func promptEvent(text: String) {
+        
+        self.promptView.left = CYDevice.width() / 2 - self.promptView.width / 2
+        
+        let tempTop: CGFloat = (self.bbNavigationBar?.bottom)!
+        self.promptView.top = tempTop
+        self.promptView.titleLabel.text = text
+        
+        UIView.animate(withDuration: 0.35, animations: {
+            self.promptView.top = tempTop+10
+            self.promptView.alpha = 1
+        }) { (s) in
+            UIView.animate(withDuration: 0.35, delay: 1, options: .curveLinear, animations: {
+                self.promptView.top = tempTop
+                self.promptView.alpha = 0
+            }, completion: nil)
+        }
+        
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -142,3 +130,36 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
     */
 
 }
+
+class PromptView: CYView {
+    
+    let titleLabel: CYLabel = { () -> CYLabel in
+        let label: CYLabel = CYLabel()
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.font = CYFont.system(size: 16)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.RGBA(r: 0, g: 0, b: 0, a: 0.95)
+        self.layer.cornerRadius = frame.size.height / 2
+        
+        self.addSubview(titleLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.titleLabel.frame = CGRect.init(x: 20, y: 0, width: self.width-40, height: self.height)
+        
+    }
+    
+}
+

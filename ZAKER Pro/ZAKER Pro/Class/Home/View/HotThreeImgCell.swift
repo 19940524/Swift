@@ -84,6 +84,7 @@ class HotThreeImgCell: HotBaseCell {
         self.subTitleLabel.left = self.soucreLabel.right + self.sToT_sp
         self.subTitleLabel.size = CalculateText.attSize(text: (params?.subTitle)!, width: 300)
         self.subTitleLabel.bottom = self.soucreLabel.bottom
+        self.subTitleLabel.bottom -= (self.params?.isShowTime)! ? 1.5 : 0
         
         self.imageView1.frame = CGRect(x: self.t_left, y: self.soucreLabel.bottom + CY_OFFSET.height(h: 12), width: self.img_w, height: self.img_h)
         self.imageView2.frame = CGRect(x: self.t_left+self.img_sp+self.img_w, y: self.imageView1.top, width: self.img_w, height: self.img_h)

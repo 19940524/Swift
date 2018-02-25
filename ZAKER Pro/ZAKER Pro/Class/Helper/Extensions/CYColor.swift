@@ -16,4 +16,11 @@ extension UIColor {
     static func RGBA(r: CGFloat,g: CGFloat,b: CGFloat,a: CGFloat) -> UIColor {
         return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
+    static func random() -> UIColor {
+        let r:CGFloat = CGFloat(Random.range(from: 1..<255))
+        let g:CGFloat = CGFloat(Random.range(from: 1..<255))
+        let b:CGFloat = CGFloat(Random.range(from: 1..<255))
+        
+        return UIColor.RGB(r: r, g: g, b: b)
+    }
 }

@@ -64,12 +64,21 @@ extension UIView {
         }
     }
     
+    var origin: CGPoint {
+        get {
+            return self.frame.origin
+        }
+        set {
+            self.frame = CGRect(x: newValue.x, y: newValue.y, width: self.width, height: self.height)
+        }
+    }
+    
     var size: CGSize {
         get {
             return self.frame.size
         }
         set {
-            return self.frame = CGRect(origin: self.frame.origin, size: newValue)
+            self.frame = CGRect(origin: self.frame.origin, size: newValue)
         }
     }
     var centerY: CGFloat {

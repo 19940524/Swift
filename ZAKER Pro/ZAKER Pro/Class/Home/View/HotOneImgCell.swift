@@ -15,6 +15,7 @@ class HotOneImgCell: HotBaseCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        self.contentView.backgroundColor = UIColor.red
         
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.coverImage)
@@ -41,8 +42,11 @@ class HotOneImgCell: HotBaseCell {
         self.titleLabel.text  = par?.title
         self.soucreLabel.text = par?.source
         
-        let url = URL(string:  (par?.img!)!)
-        self.setImage(imageViwe: coverImage, url: url!)
+        if par?.img != nil {
+            let url = URL(string:  (par?.img!)!)
+            self.setImage(imageViwe: coverImage, url: url!)            
+        }
+        
         
         self.subTitleLabel.attributedText = par?.subTitle
     }
@@ -71,5 +75,7 @@ class HotOneImgCell: HotBaseCell {
         self.subTitleLabel.left = self.soucreLabel.right + self.sToT_sp
         self.subTitleLabel.size = CalculateText.attSize(text: (params?.subTitle)!, width: 300)
         self.subTitleLabel.bottom = self.soucreLabel.bottom
+        
+        self.subTitleLabel.bottom -= (self.params?.isShowTime)! ? 1.5 : 0
     }
 }
