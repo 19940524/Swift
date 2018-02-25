@@ -22,7 +22,7 @@ class HotCellModel: CYCellModel {
     var imgnewextra : Array<String>?
     var boardid     : String?       // photoview_bbs  图集 news2_bbs       新闻 video_bbs      视频 dy_wemedia_bbs  新闻
     var digest      : String?       // 描述
-    
+    var id          : String?
     
     override init() {
         super.init()
@@ -71,6 +71,10 @@ class HotCellModel: CYCellModel {
             }
             if key == "digest" {
                 digest = value.string
+                continue
+            }
+            if key == "id" {
+                id = value.string
                 continue
             }
             

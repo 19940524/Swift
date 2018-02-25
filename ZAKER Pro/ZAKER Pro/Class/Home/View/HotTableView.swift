@@ -19,6 +19,8 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
         }
     }
     
+    public var rootVC: CYHomeVC? = nil
+    
     override init(frame: CGRect, style: UITableViewStyle) {
         
         super.init(frame: frame, style: style)
@@ -138,6 +140,15 @@ class HotTableView: CYTableView,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let params:HotCellModel = dataList![indexPath.row]
+        if params.boardid == "news2_bbs" || params.boardid == "dy_wemedia_bbs" {
+            let vc: NewsDetailsViewController = NewsDetailsViewController()
+            vc.params = params
+            self.rootVC?.navigationController?.pushViewController(vc , animated: true)
+        }
     }
     
     deinit {

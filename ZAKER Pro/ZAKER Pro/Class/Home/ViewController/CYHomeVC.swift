@@ -34,6 +34,7 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate {
         scrollView.isPagingEnabled = true
         self.view.addSubview(scrollView)
         
+        hotTableView.rootVC = self
         scrollView.addSubview(hotTableView)
         scrollView.addSubview(subTableView)
         scrollView.addSubview(liveTableView)

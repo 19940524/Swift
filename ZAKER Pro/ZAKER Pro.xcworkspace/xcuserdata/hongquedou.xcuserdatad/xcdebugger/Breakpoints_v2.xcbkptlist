@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZAKER Pro/Class/Home/ViewController/CYHomeVC.swift"
-            timestampString = "539580471.030238"
+            filePath = "ZAKER Pro/Class/Home/NewsDetails/ViewController/NewsDetailsViewController.swift"
+            timestampString = "541245681.728501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "searchEvent()"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "loadHTML()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZAKER Pro/Class/Home/NewsDetails/ViewController/NewsDetailsViewController.swift"
+            timestampString = "541245681.728781"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "loadHTMLBody(body:img:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
