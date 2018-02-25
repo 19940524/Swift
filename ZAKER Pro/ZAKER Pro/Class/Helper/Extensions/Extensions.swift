@@ -9,6 +9,7 @@
 import UIKit
 import Darwin
 
+<<<<<<< HEAD
 struct Conversion {
     /// 弧度转角度
     static func radiansToDegrees(radians: CGFloat) -> CGFloat {
@@ -22,6 +23,10 @@ struct Conversion {
 
 // 获取字体
 struct CYFont {
+=======
+/// 获取字体
+struct CY_FONT {
+>>>>>>> origin/master
     static func SFUIText(size: CGFloat) -> UIFont? {
         return UIFont(name: ".SFUIText-Semibold", size: size)
     }
@@ -38,6 +43,7 @@ struct CYFont {
     }
 }
 
+
 struct CY_OFFSET {
     static func width(w: CGFloat) -> CGFloat {
         return UIScreen.main.bounds.width / 375.0 * w
@@ -47,7 +53,7 @@ struct CY_OFFSET {
     }
 }
 
-// 计算文本大小
+/// 计算文本大小
 private let max: CGFloat = 999999.0
 struct CalculateText {
     
@@ -77,7 +83,10 @@ struct CalculateText {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 /// 指定范围随机数
 struct Random {
     static func range(from range: Range<Int>) -> Int {

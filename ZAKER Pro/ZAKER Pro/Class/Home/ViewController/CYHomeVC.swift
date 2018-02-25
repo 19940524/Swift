@@ -44,6 +44,8 @@ class CYHomeVC: CYViewController,UIScrollViewDelegate,TopMenuViewDelegate,HotTab
         self.view.addSubview(scrollView)
         
         hotTableView.hotDelegate = self
+        hotTableView.rootVC = self
+
         scrollView.addSubview(hotTableView)
         scrollView.addSubview(subCollectionView)
         scrollView.addSubview(liveTableView)

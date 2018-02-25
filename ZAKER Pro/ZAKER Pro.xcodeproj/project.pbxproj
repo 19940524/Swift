@@ -12,9 +12,16 @@
 		4D4FA23F2022F9ED005D39F3 /* ViewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FA23E2022F9ED005D39F3 /* ViewOffset.swift */; };
 		4D4FA2412022FC5A005D39F3 /* HotTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FA2402022FC5A005D39F3 /* HotTableView.swift */; };
 		4D4FA24320230166005D39F3 /* LiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FA24220230166005D39F3 /* LiveTableView.swift */; };
+
+		4D4FA245202301B0005D39F3 /* SubscribeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FA244202301B0005D39F3 /* SubscribeTableView.swift */; };
+		4D567AD520428AFF00FFC69E /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D567AD420428AFF00FFC69E /* NewsDetailsViewController.swift */; };
+		4D567AD72042904100FFC69E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D567AD62042904100FFC69E /* WebKit.framework */; };
+
 		4D662F64201C128500330150 /* CYMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D662F63201C128500330150 /* CYMeViewController.swift */; };
 		4D662F66201C129A00330150 /* CYSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D662F65201C129A00330150 /* CYSocialViewController.swift */; };
 		4D662F68201C12AB00330150 /* CYLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D662F67201C12AB00330150 /* CYLocalViewController.swift */; };
+		4D72393B2042AEE200D357E2 /* CYWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72393A2042AEE200D357E2 /* CYWebView.swift */; };
+		4D72393D2042AEF700D357E2 /* NewsWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72393C2042AEF700D357E2 /* NewsWebView.swift */; };
 		4D73F0232025A78500FCCED6 /* HotBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73F0222025A78500FCCED6 /* HotBaseCell.swift */; };
 		4D84B6C0201B5D3C0091FEF6 /* CYVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B6BF201B5D3C0091FEF6 /* CYVideoViewController.swift */; };
 		4DB234E7201B4DCE001A8DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB234E6201B4DCE001A8DBE /* AppDelegate.swift */; };
@@ -98,9 +105,16 @@
 		4D4FA23E2022F9ED005D39F3 /* ViewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOffset.swift; sourceTree = "<group>"; };
 		4D4FA2402022FC5A005D39F3 /* HotTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTableView.swift; sourceTree = "<group>"; };
 		4D4FA24220230166005D39F3 /* LiveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTableView.swift; sourceTree = "<group>"; };
+
+		4D4FA244202301B0005D39F3 /* SubscribeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeTableView.swift; sourceTree = "<group>"; };
+		4D567AD420428AFF00FFC69E /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
+		4D567AD62042904100FFC69E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+
 		4D662F63201C128500330150 /* CYMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYMeViewController.swift; sourceTree = "<group>"; };
 		4D662F65201C129A00330150 /* CYSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYSocialViewController.swift; sourceTree = "<group>"; };
 		4D662F67201C12AB00330150 /* CYLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYLocalViewController.swift; sourceTree = "<group>"; };
+		4D72393A2042AEE200D357E2 /* CYWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYWebView.swift; sourceTree = "<group>"; };
+		4D72393C2042AEF700D357E2 /* NewsWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebView.swift; sourceTree = "<group>"; };
 		4D73F0222025A78500FCCED6 /* HotBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotBaseCell.swift; sourceTree = "<group>"; };
 		4D84B6BF201B5D3C0091FEF6 /* CYVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYVideoViewController.swift; sourceTree = "<group>"; };
 		4DB234E3201B4DCE001A8DBE /* ZAKER Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZAKER Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D567AD72042904100FFC69E /* WebKit.framework in Frameworks */,
 				A698815A2026D5A800F40F60 /* YYText.framework in Frameworks */,
 				B2706C9F768E383E4E3036BD /* Pods_ZAKER_Pro.framework in Frameworks */,
 			);
@@ -210,6 +225,7 @@
 		3289BD4D73A061B5D6F1A95B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D567AD62042904100FFC69E /* WebKit.framework */,
 				A698815B2026D5A800F40F60 /* YYText.framework */,
 				A69881592026D57F00F40F60 /* YYText.framework */,
 				D22A063927C89FF103552D85 /* Pods_ZAKER_Pro.framework */,
@@ -217,6 +233,39 @@
 				169F05E5672D9E47EAAEFA3B /* Pods_ZAKER_ProUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D567AD02042892600FFC69E /* NewsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4D567AD12042892600FFC69E /* Model */,
+				4D567AD22042892600FFC69E /* View */,
+				4D567AD32042892600FFC69E /* ViewController */,
+			);
+			path = NewsDetails;
+			sourceTree = "<group>";
+		};
+		4D567AD12042892600FFC69E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D567AD22042892600FFC69E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D72393C2042AEF700D357E2 /* NewsWebView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D567AD32042892600FFC69E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D567AD420428AFF00FFC69E /* NewsDetailsViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		4D84B6BB201B5D0E0091FEF6 /* Video */ = {
@@ -448,6 +497,7 @@
 				4DB23566201B4ED1001A8DBE /* CYToolbar.swift */,
 				4DB23567201B4ED1001A8DBE /* CYView.swift */,
 				A6948BBE201E1C4B00B1E2AA /* BBNavigationBar.swift */,
+				4D72393A2042AEE200D357E2 /* CYWebView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +523,7 @@
 		4DB23580201B4EDA001A8DBE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4D567AD02042892600FFC69E /* NewsDetails */,
 				4DB23582201B4F02001A8DBE /* Model */,
 				4DB23583201B4F02001A8DBE /* View */,
 				4DB23581201B4F02001A8DBE /* ViewController */,
@@ -895,6 +946,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D567AD520428AFF00FFC69E /* NewsDetailsViewController.swift in Sources */,
 				A6948BBF201E1C4B00B1E2AA /* BBNavigationBar.swift in Sources */,
 				4D307D532023133A00F0B39F /* TopMenuView.swift in Sources */,
 				A6382E412031D04D00C91BD9 /* HotHandler.swift in Sources */,
@@ -907,6 +959,7 @@
 				4DF878D1202987A900336E6C /* CYColor.swift in Sources */,
 				4D4FA24320230166005D39F3 /* LiveTableView.swift in Sources */,
 				4D662F64201C128500330150 /* CYMeViewController.swift in Sources */,
+				4D72393D2042AEF700D357E2 /* NewsWebView.swift in Sources */,
 				4DB234E7201B4DCE001A8DBE /* AppDelegate.swift in Sources */,
 				4DF9502120285AD20075FBA8 /* HotOneImgCell.swift in Sources */,
 				4DF9501F20283D210075FBA8 /* HotCellModel.swift in Sources */,
@@ -921,6 +974,7 @@
 				A6A9C9E1203282FC00E1F32B /* HotRefreshFooterAnimator.swift in Sources */,
 				4DF9502320285AFD0075FBA8 /* HotThreeImgCell.swift in Sources */,
 				4DF95025202860490075FBA8 /* HotVideoCell.swift in Sources */,
+				4D72393B2042AEE200D357E2 /* CYWebView.swift in Sources */,
 				A6948BBD201E102000B1E2AA /* Extensions.swift in Sources */,
 				4D84B6C0201B5D3C0091FEF6 /* CYVideoViewController.swift in Sources */,
 				4D32AF102022A73F00367CD3 /* CustomNavigationBar.swift in Sources */,

@@ -10,6 +10,14 @@ import UIKit
 
 class CYTableView: UITableView {
 
+    override init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame, style: style)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
