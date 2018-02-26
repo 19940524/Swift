@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZAKER Pro/Class/Home/NewsDetails/ViewController/NewsDetailsViewController.swift"
-            timestampString = "541245681.728501"
+            filePath = "ZAKER Pro/Class/Home/View/HotOneImgCell.swift"
+            timestampString = "541333602.159716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "loadHTML()"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "setParams(par:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZAKER Pro/Class/Home/NewsDetails/ViewController/NewsDetailsViewController.swift"
-            timestampString = "541245681.728781"
+            filePath = "ZAKER Pro/Class/Home/View/HotOneImgCell.swift"
+            timestampString = "541333602.159777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "loadHTMLBody(body:img:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "setParams(par:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

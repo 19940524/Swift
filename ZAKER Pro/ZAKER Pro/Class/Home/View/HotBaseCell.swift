@@ -109,9 +109,9 @@ class HotBaseCell: CYTableViewCell {
         imageViwe.af_setImage(
             withURL: url,
             placeholderImage: UIImage(named: "article_html_content_loading"),
-            filter: filter
+            filter: filter,
+            imageTransition: .crossDissolve(0.5)
         )
-//        imageViwe.af_setImage(withURL: url)
     }
     
     func setImage(imageViwe: UIImageView,url: URL,size: CGSize) {
@@ -122,7 +122,8 @@ class HotBaseCell: CYTableViewCell {
         imageViwe.af_setImage(
             withURL: url,
             placeholderImage: UIImage(named: "article_html_content_loading"),
-            filter: filter
+            filter: filter,
+            imageTransition: .crossDissolve(0.5)
         )
     }
 }

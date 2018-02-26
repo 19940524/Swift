@@ -10,10 +10,6 @@ import UIKit
 import WebKit
 
 class CYWebView: WKWebView {
-
-    init() {
-        super.init()
-    }
     
     override init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)

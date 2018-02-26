@@ -42,13 +42,17 @@ class HotOneImgCell: HotBaseCell {
         self.titleLabel.text  = par?.title
         self.soucreLabel.text = par?.source
         
-        if par?.img != nil {
-            let url = URL(string:  (par?.img!)!)
-            self.setImage(imageViwe: coverImage, url: url!)            
+        self.subTitleLabel.attributedText = par?.subTitle
+        
+        guard par?.img != nil else {
+            return
         }
         
-        
-        self.subTitleLabel.attributedText = par?.subTitle
+        let url = URL(string:(par?.img!)!)
+        guard url != nil else {
+            return
+        }
+        self.setImage(imageViwe: coverImage, url: url!)
     }
     
     override func layoutSubviews() {

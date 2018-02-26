@@ -130,7 +130,11 @@
 }
 
 - (void)wyBackAction {
-    [[NSNotificationCenter defaultCenter] postNotificationName:YU_BACK_ACTION object:nil];
+    if (self.isFromList) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:YU_BACK_ACTION object:nil];
+    }
 }
 
 //- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {

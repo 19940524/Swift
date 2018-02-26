@@ -35,6 +35,7 @@ import Cocoa
 #endif
 
 extension DataRequest {
+    /// 可接受的图片类型
     static var acceptableImageContentTypes: Set<String> = [
         "image/tiff",
         "image/jpeg",
@@ -48,11 +49,13 @@ extension DataRequest {
         "image/x-ms-bmp",
         "image/x-win-bitmap"
     ]
-
+    
+    /// 图像流初始字节模式。
     static let streamImageInitialBytePattern = Data(bytes: [255, 216]) // 0xffd8
 
     /// Adds the content types specified to the list of acceptable images content types for validation.
     ///
+    /// 将指定的内容类型添加到可接受的图像内容类型列表中进行验证。
     /// - parameter contentTypes: The additional content types.
     public class func addAcceptableImageContentTypes(_ contentTypes: Set<String>) {
         DataRequest.acceptableImageContentTypes.formUnion(contentTypes)

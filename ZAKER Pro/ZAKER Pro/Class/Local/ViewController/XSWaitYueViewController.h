@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy) NSString *refe_shu;
 
+@property (nonatomic, assign) BOOL isFromList;
+
 @end

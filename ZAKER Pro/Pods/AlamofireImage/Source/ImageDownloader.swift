@@ -127,6 +127,7 @@ open class ImageDownloader {
     // MARK: Initialization
 
     /// The default instance of `ImageDownloader` initialized with default values.
+    /// 使用默认值初始化“ImageDownloader”的默认实例。
     open static let `default` = ImageDownloader()
 
     /// Creates a default `URLSessionConfiguration` with common usage parameter values.

@@ -39,7 +39,7 @@ class EcptomaAdvertising: NSObject, UICollisionBehaviorDelegate {
         //重力行为
         let gravite = UIGravityBehavior(items: [button])
         //加速度
-        gravite.magnitude = 17
+        gravite.magnitude = 9
         //碰撞行为
         let collisionBehavior = UICollisionBehavior(items: [button])
         //用参考视图边界作为碰撞边界
@@ -50,7 +50,7 @@ class EcptomaAdvertising: NSObject, UICollisionBehaviorDelegate {
         //弹性
         hugeBehavior.elasticity = 1
         //阻力
-        hugeBehavior.resistance = 0.1
+//        hugeBehavior.resistance = 0.1
         
         dynamicAnimator?.addBehavior(gravite)
         dynamicAnimator?.addBehavior(collisionBehavior)

@@ -22,8 +22,8 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
     
     public var htmlString: String?
     
-    override init() {
-        super.init()
+    convenience init() {
+        self.init()
 
         self.isOpaque = false
         self.navigationDelegate = self
