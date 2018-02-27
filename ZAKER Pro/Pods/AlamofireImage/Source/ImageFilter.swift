@@ -35,9 +35,11 @@ import Cocoa
 /// The `ImageFilter` protocol defines properties for filtering an image as well as identification of the filter.
 public protocol ImageFilter {
     /// A closure used to create an alternative representation of the given image.
+    ///
     var filter: (Image) -> Image { get }
 
     /// The string used to uniquely identify the filter operation.
+    /// 唯一标识用于筛选操作的字符串。
     var identifier: String { get }
 }
 

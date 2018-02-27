@@ -104,6 +104,8 @@ extension DataRequest {
 
     /// Adds a response handler to be called once the request has finished.
     ///
+    /// 在请求完成后添加一个响应处理程序。
+    ///
     /// - parameter imageScale:           The scale factor used when interpreting the image data to construct
     ///                                   `responseImage`. Specifying a scale factor of 1.0 results in an image whose
     ///                                   size matches the pixel-based dimensions of the image. Applying a different
@@ -143,6 +145,8 @@ extension DataRequest {
 
     /// Sets a closure to be called periodically during the lifecycle of the request as data is read from the server
     /// and converted into images.
+    ///
+    /// 设置一个闭包，在请求的生命周期中定期调用，因为数据从服务器读取并转换为图像。
     ///
     /// - parameter imageScale:           The scale factor used when interpreting the image data to construct
     ///                                   `responseImage`. Specifying a scale factor of 1.0 results in an image whose

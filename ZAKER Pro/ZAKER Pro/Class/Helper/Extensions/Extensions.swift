@@ -9,7 +9,7 @@
 import UIKit
 import Darwin
 
-
+// MARK: - 弧度\角度
 struct Conversion {
     /// 弧度转角度
     static func radiansToDegrees(radians: CGFloat) -> CGFloat {
@@ -21,7 +21,7 @@ struct Conversion {
     }
 }
 
-/// 获取字体
+// MARK: - 获取字体
 struct CYFont {
 
     static func SFUIText(size: CGFloat) -> UIFont? {
@@ -50,7 +50,7 @@ struct CY_OFFSET {
     }
 }
 
-/// 计算文本大小
+// MARK: - 计算文本大小
 private let max: CGFloat = 999999.0
 struct CalculateText {
     
@@ -79,7 +79,7 @@ struct CalculateText {
         return size
     }
 }
-/// 指定范围随机数
+// MARK: - 指定范围随机数
 struct Random {
     static func range(from range: Range<Int>) -> Int {
         let distance = range.upperBound - range.lowerBound
@@ -89,7 +89,7 @@ struct Random {
 }
 
 
-// 设备判断
+// MARK: - 设备判断
 class CYDevice {
     // 判断是否iPhone X
     static func isX() -> Bool {
@@ -137,3 +137,38 @@ class CYDevice {
     }
     
 }
+
+// MARK: - 判断图片类型
+private let pngHeader: [UInt8] = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]
+private let jpgHeaderSOI: [UInt8] = [0xFF, 0xD8]
+private let jpgHeaderIF: [UInt8] = [0xFF]
+private let gifHeader: [UInt8] = [0x47, 0x49, 0x46]
+
+enum ImageFormat {
+    case Unknown, PNG, JPEG, GIF
+}
+/// 判断图片类型
+extension NSData {
+    var bb_imageFormat: ImageFormat {
+        var buffer = [UInt8](repeating: 0, count: 8)
+        self.getBytes(&buffer, length: 8)
+        if buffer == pngHeader {
+            return .PNG
+        } else if buffer[0] == jpgHeaderSOI[0] &&
+            buffer[1] == jpgHeaderSOI[1] &&
+            buffer[2] == jpgHeaderIF[0]
+        {
+            return .JPEG
+        } else if buffer[0] == gifHeader[0] &&
+            buffer[1] == gifHeader[1] &&
+            buffer[2] == gifHeader[2]
+        {
+            return .GIF
+        }
+        
+        return .Unknown
+    }
+}
+
+
+

@@ -9,6 +9,7 @@
 import UIKit
 import ESPullToRefresh
 import FSPagerView
+import AlamofireImage
 
 class SubCell: CYCollectionViewCell {
     
@@ -23,12 +24,9 @@ class SubCell: CYCollectionViewCell {
     }
     
     @objc func buttonAction() {
-        CYHandler.GETData(url: "http://img.mp.itc.cn/upload/20170518/124d595d0e594a3ebeb91573ec99f64f.gif", params: nil, success: { (s) in
-            print(s)
-        }) { (f) in
-            print(f)
-        }
+        
     }
+    
     
     func setImage(image: UIImage) {
         button.setImage(image, for: .normal)
@@ -70,7 +68,7 @@ class SubHeaderView: UICollectionReusableView,FSPagerViewDelegate, FSPagerViewDa
         self.pagerView.delegate = self
         self.pagerView.dataSource = self
         self.pagerView.isInfinite = true
-        self.pagerView.automaticSlidingInterval = 3.0
+        self.pagerView.automaticSlidingInterval = 5.0
         self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
         self.addSubview(self.pagerView)
         
@@ -92,8 +90,8 @@ class SubHeaderView: UICollectionReusableView,FSPagerViewDelegate, FSPagerViewDa
     
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-
-        cell.imageView?.af_setImage(withURL: URL(string: self.imageNames[index])!)
+        
+        cell.imageView?.bb_setImage(withURL: URL(string: self.imageNames[index])!)
         
         cell.imageView?.contentMode = .scaleAspectFill
         return cell

@@ -35,11 +35,14 @@ import Cocoa
 /// to cancel active requests running on the `ImageDownloader` session. As a general rule, image download requests
 /// should be cancelled using the `RequestReceipt` instead of calling `cancel` directly on the `request` itself. The
 /// `ImageDownloader` is optimized to handle duplicate request scenarios as well as pending versus active downloads.
+/// “RequestReceipt”是在启动下载请求时由“ImageDownloader”提供的一个对象。它可以用来取消在“ImageDownloader”会话上运行的活动请求。一般来说，图像下载请求应该使用“RequestReceipt”取消，而不是直接在“请求”本身上调用“cancel”。“ImageDownloader”被优化来处理重复的请求场景，以及挂起和活动下载。
 open class RequestReceipt {
     /// The download request created by the `ImageDownloader`.
+    /// 由“ImageDownloader”创建的下载请求。
     open let request: Request
 
     /// The unique identifier for the image filters and completion handlers when duplicate requests are made.
+    /// 当重复请求时，图像筛选器和完成处理程序的唯一标识符。
     open let receiptID: String
 
     init(request: Request, receiptID: String) {
@@ -56,14 +59,18 @@ open class RequestReceipt {
 /// By default, any download request with a cached image equivalent in the image cache will automatically be served the
 /// cached image representation. Additional advanced features include supporting multiple image filters and completion
 /// handlers for a single request.
+///
+/// “ImageDownloader”类负责在优先队列中并行下载图像。根据下载优先级，将传入的下载添加到队列的前面或后面。每个下载的图像都缓存在底层的“NSURLCache”以及支持图像过滤器的内存图像缓存中。默认情况下，在图像缓存中具有缓存图像等价物的任何下载请求都将自动提供缓存的图像表示。附加的高级功能包括支持单个请求的多个图像筛选器和完成处理程序。
 open class ImageDownloader {
     /// The completion handler closure used when an image download completes.
+    /// 当图像下载完成时，将使用此闭包返回。
     public typealias CompletionHandler = (DataResponse<Image>) -> Void
 
     /// The progress handler closure called periodically during an image download.
+    /// 在图像下载过程中，进程处理程序会定期调用闭包返回。。
     public typealias ProgressHandler = DataRequest.ProgressHandler
 
-    // MARK: Helper Types
+    // MARK: Helper Types   // 辅助类型
 
     /// Defines the order prioritization of incoming download requests being inserted into the queue.
     ///
@@ -232,10 +239,11 @@ open class ImageDownloader {
         }
     }
 
-    // MARK: Download
+    // MARK: Download  下载
 
     /// Creates a download request using the internal Alamofire `SessionManager` instance for the specified URL request.
     ///
+    /// 根据指定的URL请求，使用内部Alamofire ' SessionManager '实例创建一个下载请求。
     /// If the same download request is already in the queue or currently being downloaded, the filter and completion
     /// handler are appended to the already existing request. Once the request completes, all filters and completion
     /// handlers attached to the request are executed in the order they were added. Additionally, any filters attached
@@ -273,6 +281,7 @@ open class ImageDownloader {
 
         synchronizationQueue.sync {
             // 1) Append the filter and completion handler to a pre-existing request if it already exists
+            // 如果已经存在已存在的请求，则追加该筛选器和完成处理程序。
             let urlID = ImageDownloader.urlIdentifier(for: urlRequest)
 
             if let responseHandler = self.responseHandlers[urlID] {
@@ -282,6 +291,7 @@ open class ImageDownloader {
             }
 
             // 2) Attempt to load the image from the image cache if the cache policy allows it
+            // 如果缓存策略允许，尝试从图像缓存加载图像。
             if let request = urlRequest.urlRequest {
                 switch request.cachePolicy {
                 case .useProtocolCachePolicy, .returnCacheDataElseLoad, .returnCacheDataDontLoad:
@@ -305,6 +315,7 @@ open class ImageDownloader {
             }
 
             // 3) Create the request and set up authentication, validation and response serialization
+            // 创建请求并设置验证、验证和响应序列化。
             request = self.sessionManager.request(urlRequest)
 
             if let credential = self.credential {
@@ -356,7 +367,7 @@ open class ImageDownloader {
                             } else {
                                 filteredImage = image
                             }
-
+                            // 缓存图片
                             strongSelf.imageCache?.add(filteredImage, for: request, withIdentifier: filter?.identifier)
 
                             DispatchQueue.main.async {

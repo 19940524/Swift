@@ -172,11 +172,14 @@ extension UIImageView {
         }
     }
     
+    /// 有效的URL请求
     var af_activeRequestReceipt: RequestReceipt? {
         get {
+            // 获取关联对象
             return objc_getAssociatedObject(self, &AssociatedKey.activeRequestReceipt) as? RequestReceipt
         }
         set {
+            // 设置关联对象
             objc_setAssociatedObject(self, &AssociatedKey.activeRequestReceipt, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
@@ -270,6 +273,8 @@ extension UIImageView {
     ///                                         Defaults to `.None`.
     /// - parameter runImageTransitionIfCached: Whether to run the image transition if the image is cached. Defaults
     ///                                         to `false`.
+    ///
+    /// 如果图像被缓存，是否运行图像转换。默认为“假”。
     /// - parameter completion:                 A closure to be executed when the image request finishes. The closure
     ///                                         has no return value and takes three arguments: the original request,
     ///                                         the response from the server and the result containing either the
@@ -307,13 +312,17 @@ extension UIImageView {
             let request = urlRequest.urlRequest,
             let image = imageCache?.image(for: request, withIdentifier: filter?.identifier)
         {
+            // 创建响应结果
             let response = DataResponse<UIImage>(request: request, response: nil, data: nil, result: .success(image))
-
+            
+            // 是否运行图像转换动画。默认为“假”。
             if runImageTransitionIfCached {
                 let tinyDelay = DispatchTime.now() + Double(Int64(0.001 * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 
                 // Need to let the runloop cycle for the placeholder image to take affect
+                // 回到主线程 执行图片过渡动画
                 DispatchQueue.main.asyncAfter(deadline: tinyDelay) {
+                    // 替换图片
                     self.run(imageTransition, with: image)
                     completion?(response)
                 }
@@ -335,7 +344,6 @@ extension UIImageView {
 
         // Download the image, then run the image transition or completion handler
         // 下载图像，然后运行图像转换或完成处理程序。
-        // 断点
         let requestReceipt = imageDownloader.download(
             urlRequest,
             receiptID: downloadID,
@@ -343,6 +351,7 @@ extension UIImageView {
             progress: progress,
             progressQueue: progressQueue,
             completion: { [weak self] response in
+                //
                 guard
                     let strongSelf = self,
                     strongSelf.isURLRequestURLEqualToActiveRequestURL(response.request) &&
@@ -353,15 +362,17 @@ extension UIImageView {
                 }
 
                 if let image = response.result.value {
+                    // 替换图片
                     strongSelf.run(imageTransition, with: image)
                 }
-
+                // 撤销活动请求
                 strongSelf.af_activeRequestReceipt = nil
 
                 completion?(response)
             }
         )
-
+        
+        // 给活动请求赋值
         af_activeRequestReceipt = requestReceipt
     }
 
@@ -381,13 +392,20 @@ extension UIImageView {
         af_activeRequestReceipt = nil
     }
 
-    // MARK: - Image Transition
+    // MARK: - Image Transition  图像过渡动画
 
     /// Runs the image transition on the image view with the specified image.
     ///
+    /// 使用指定的图像在图像视图上运行图像转换。
+    ///
     /// - parameter imageTransition: The image transition to ran on the image view.
+    /// 图像转换为在图像视图上运行。
+    ///
     /// - parameter image:           The image to use for the image transition.
+    /// 用于图像转换的图像。
+    ///
     public func run(_ imageTransition: ImageTransition, with image: Image) {
+        // 替换图片过渡动画
         UIView.transition(
             with: self,
             duration: imageTransition.duration,
