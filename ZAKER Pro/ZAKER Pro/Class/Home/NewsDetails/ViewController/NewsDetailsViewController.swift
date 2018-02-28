@@ -11,9 +11,12 @@ import WebKit
 import Alamofire
 import SwiftyJSON
 
-class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITableViewDelegate {
+class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITableViewDelegate,NewsWebDelegate {
 
     public var params:HotCellModel? = nil
+    
+    private var webView: NewsWebView? = nil
+    private var webViewHeight: CGFloat = 200
     
     //在控制器定义全局的可变data，用户存储接收的数据
     var jsonData:NSMutableData = NSMutableData()
@@ -60,7 +63,11 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
             var headerView: UITableViewHeaderFooterView? = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerView")
             if headerView == nil {
                 headerView = UITableViewHeaderFooterView(reuseIdentifier: "headerView")
-                
+                webView = NewsWebView()
+                webView?.setParams()
+                webView?.newsDelegate = self
+                webView?.frame = CGRect(x: 0, y: 0, width: CYDevice.width(), height: webViewHeight)
+                headerView?.contentView.addSubview(webView!)
             }
             return headerView
         } else {
@@ -70,6 +77,13 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return webViewHeight
+        }
+        return 0.001
     }
     
     /// 请求新闻详情数据
@@ -132,8 +146,35 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
             i += 1;
         }
         print(newBody)
+        
+        let engine: MGTemplateEngine = MGTemplateEngine()
+        engine.matcher = ICUTemplateMatcher(templateEngine: engine)
+        engine.setObject(newBody, forKey: "content")
+        
+        let templatePath: String = Bundle.main.path(forResource: "HTMLTemplate", ofType: "html")!
+        let html: String = engine.processTemplate(templatePath, withVariables: nil)
+        
+        webView?.loadHTMLString(html, baseURL: nil)
     }
 
+    // MARK: - NewsWebDelegate
+    func updateWebCellHegiht(webView: NewsWebView) {
+        
+        webViewHeight = webView.height
+        
+        self.tableView.beginUpdates()
+        self.tableView.reloadData()
+        self.tableView.endUpdates()
+    }
+    
+    func webLoadFinishUpdateOthersData(webView: NewsWebView) {
+        
+    }
+    
+    func clickPhoto(webView: NewsWebView, urls: Array<String>, selIndex: NSInteger) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

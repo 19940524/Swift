@@ -22,17 +22,38 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
     
     public var htmlString: String?
     
-    convenience init() {
-        self.init()
-
+    override init(frame: CGRect, configuration: WKWebViewConfiguration) {
+        super.init(frame: frame, configuration: configuration)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func setParams() {
         self.isOpaque = false
         self.navigationDelegate = self
         self.scrollView.isScrollEnabled = false
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("didStartProvisionalNavigation")
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        if !webLoadFinish {
+            webView.evaluateJavaScript("document.body.getBoundingClientRect().height", completionHandler: { [weak self] (obj, error) in
+                let number: NSNumber = obj as! NSNumber
+                print(number)
+                self?.height = CGFloat(number.floatValue)
+                self?.newsDelegate?.updateWebCellHegiht(webView: self!)
+            })
+        }
+        
+        webLoadFinish = true
+    }
+    
     
 }

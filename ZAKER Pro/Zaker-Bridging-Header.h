@@ -7,5 +7,9 @@
 //
 
 @import UIKit;
+@import Foundation;
 
 #import <YYText/YYText.h>
+//#import <MGTemplateEngine/MGTemplateEngine.h>
+#import "MGTemplateEngine.h"
+#import "ICUTemplateMatcher.h"

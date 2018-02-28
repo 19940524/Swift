@@ -42,11 +42,11 @@ extension UIImageView {
         let storage = try? Storage(diskConfig: diskConfig, memoryConfig: memoryConfig)
         
         let tempData = try? storage?.object(ofType: Data.self, forKey: url.absoluteString)
-        print(tempData as Any);
+        
         self.stopAnimatingGIF()
         
         if tempData != nil  {
-//            self.image = nil
+            self.image = nil
             let data: Data = tempData!!
             self.animate(withGIFData: data)
         } else {
