@@ -18,6 +18,9 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     private var webView: NewsWebView? = nil
     private var webViewHeight: CGFloat = 200
     
+    private let activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    private let actBaseView: CYView = CYView()
+    
     //在控制器定义全局的可变data，用户存储接收的数据
     var jsonData:NSMutableData = NSMutableData()
     var dataSoucre: Dictionary<String, Any>? {
@@ -29,13 +32,22 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     let bottomBarH: CGFloat = 40
     
     
-    private let tableView: CYTableView = CYTableView(frame: CGRect.zero, style: .plain)
+    private let tableView: CYTableView = CYTableView(frame: CGRect.zero, style: .grouped)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        actBaseView.backgroundColor = UIColor.white
+        self.view.addSubview(actBaseView)
+        
+        activityView.startAnimating()
+        actBaseView.addSubview(activityView)
+        
         
         self.view.backgroundColor = UIColor.white
+        self.automaticallyAdjustsScrollViewInsets = false
+            
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
@@ -125,6 +137,7 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         var i = 0
         
         var newBody: String = body
+        var imageUrls: Array<String> = Array()
         
         for imageInfo in img {
             let pixel: Array = (imageInfo["pixel"]?.components(separatedBy: "*"))!
@@ -132,7 +145,7 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
                 continue
             }
             var width: String = pixel[0]
-            var height: String = pixel[0]
+            var height: String = pixel[1]
             
             let tempH:CGFloat = CGFloat(Double(height)!) / CGFloat(Double(width)!) * CYDevice.width() * 0.92 - 0.5
             
@@ -141,19 +154,21 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
             
             let canvas: String = String.init(format: "<div class=\"a%d\" id=\"guobinImageID%d\" style=\"width:%@px;height:%@px;background:#F4F4F4; text-align:center;line-height:%@px\"></div>", i,i,width,height,height)
             newBody = newBody.replacingOccurrences(of: imageInfo["ref"]!, with: canvas)
-            
-//            [_imageUrls addObject:[imageInfo valueForKey:@"src"]];
+            imageUrls.append(imageInfo["src"]!)
             i += 1;
         }
-        print(newBody)
         
         let engine: MGTemplateEngine = MGTemplateEngine()
         engine.matcher = ICUTemplateMatcher(templateEngine: engine)
         engine.setObject(newBody, forKey: "content")
         
         let templatePath: String = Bundle.main.path(forResource: "HTMLTemplate", ofType: "html")!
-        let html: String = engine.processTemplate(templatePath, withVariables: nil)
+        let html: String = engine.processTemplateInFile(atPath: templatePath, withVariables: nil)
         
+        print("新的 html \(html)")
+        
+        webView?.imgDetalis = img
+        webView?.imageUrls = imageUrls
         webView?.loadHTMLString(html, baseURL: nil)
     }
 
@@ -161,10 +176,17 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     func updateWebCellHegiht(webView: NewsWebView) {
         
         webViewHeight = webView.height
-        
-        self.tableView.beginUpdates()
         self.tableView.reloadData()
-        self.tableView.endUpdates()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.activityView.stopAnimating()
+            
+            UIView.animate(withDuration: 0.18, animations: {
+                self.actBaseView.alpha = 0
+            }, completion: { (f) in
+                self.actBaseView.isHidden = true
+            })
+        }
     }
     
     func webLoadFinishUpdateOthersData(webView: NewsWebView) {
@@ -185,6 +207,10 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         
         let y: CGFloat = CYDevice.statusBar_h()
         self.tableView.frame = CGRect.init(x: 0, y: y, width: self.view.width, height: self.view.height - y - bottomBarH)
+        
+        self.view.bringSubview(toFront: actBaseView)
+        actBaseView.frame = self.tableView.frame
+        activityView.center = actBaseView.center
         
     }
 
