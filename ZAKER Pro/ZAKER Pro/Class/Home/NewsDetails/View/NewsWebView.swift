@@ -20,11 +20,18 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
     weak var newsDelegate: NewsWebDelegate?
     public var webLoadFinish: Bool = false
     public var htmlString: String?
+    public var superScrollView: UIScrollView? {
+        didSet {
+            superScrollView?.addObserver(self, forKeyPath: "contentOffset", options: .new, context: &myContext)
+        }
+    }
     
     public var imageUrls: Array<String>? = nil
     public var imgDetalis: Array<Dictionary<String, String>>? = nil
     var imageOriginY: Array<CGFloat>? = Array()
     let imageTag: Int = 4000
+    
+    private var myContext = 0
     
     override init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
@@ -43,7 +50,7 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("didStartProvisionalNavigation")
+//        print("didStartProvisionalNavigation")
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -51,7 +58,7 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
         if !webLoadFinish {
             webView.evaluateJavaScript("document.body.getBoundingClientRect().height", completionHandler: { [weak self] (obj, error) in
                 let number: NSNumber = obj as! NSNumber
-                print(number)
+//                print(number)
                 self?.height = CGFloat(number.floatValue) + 40
                 self?.newsDelegate?.updateWebCellHegiht(webView: self!)
             })
@@ -83,7 +90,7 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
             
             self.getDivFrame(name: divIdName, complated: { [weak self] (divFrame) in
                 
-                print(divFrame)
+//                print(divFrame)
                 
                 let imageView: CYImageView = CYImageView()
                 imageView.isUserInteractionEnabled = true
@@ -99,16 +106,15 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
 
                 let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewsWebView.clickPhoto(sender:)))
                 imageView.addGestureRecognizer(tapGR)
-
-                if divFrame.origin.y < (self?.scrollView.contentOffset.y)! + (self?.scrollView.frame.size.height)! {
+                
+                let offsetY: CGFloat = (self?.scrollView.contentOffset.y)! + (CYDevice.height()-40)
+                if divFrame.origin.y < offsetY {
                     imageView.bb_setImage(withURL: URL(string: imgParams["src"]!)!)
                 }
             })
             
             i += 1
         }
-        
-        
     }
     
     
@@ -116,12 +122,55 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
         print(sender.view!)
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if context == &myContext {
+            if let newValue: CGPoint = (change?[NSKeyValueChangeKey.newKey] as! CGPoint) {
+                
+//                CGFloat y = [newVal CGPointValue].y + scrollView.height;
+//                [wSelf scrollContentOffsetY:y];
+                let y = newValue.y + (superScrollView?.height)!
+                self.scrollContentOffsetY(offsetY: y)
+            }
+        }
+    }
     
+    func scrollContentOffsetY(offsetY: CGFloat) {
+        
+        let queue = DispatchQueue.global()
+        queue.async {
+            
+            let tempYList: Array = self.imageOriginY!
+            let imgs     : Array = self.imgDetalis!
+            
+            var i: Int = 0
+            for currentImageY: CGFloat in tempYList {
+                
+                if i >= imgs.count { break }
+                
+                let imgParams: Dictionary = imgs[i]
+                
+                if currentImageY < offsetY {
+                    
+                    DispatchQueue.main.async {
+                        奔溃
+                        print(i)
+                        let imageView: UIImageView = self.scrollView.viewWithTag(self.imageTag + i) as! UIImageView
+                        imageView.bb_setImage(withURL: URL(string: imgParams["src"]!)!)
+                    }
+                }
+                
+                i += 1
+            }
+            
+        }
+        
+        // iOS10 下部分空白 布局更新就好了
+        self.setNeedsLayout()
+    }
     
-    
-    
-    
-    
+    deinit {
+        superScrollView?.removeObserver(self, forKeyPath: "contentOffset", context: &myContext)
+    }
     
 }
 

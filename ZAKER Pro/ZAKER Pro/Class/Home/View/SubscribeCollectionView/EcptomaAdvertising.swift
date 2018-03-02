@@ -45,7 +45,7 @@ class FmImageView: CYImageView {
             if y < 0 {
                 let newY = self.height - abs(y)
                 if newY <= self.height && y < lastY {
-                    print(newY)
+//                    print(newY)
                     self.top = newY
                 }
                 lastY = y

@@ -49,6 +49,9 @@
 		4DB2357E201B4ED1001A8DBE /* CYTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2356B201B4ED1001A8DBE /* CYTableViewController.swift */; };
 		4DB2357F201B4ED1001A8DBE /* CYViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2356C201B4ED1001A8DBE /* CYViewController.swift */; };
 		4DB23587201B4FAF001A8DBE /* CYHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB23586201B4FAF001A8DBE /* CYHomeVC.swift */; };
+		4DB324842049219F00A0E98B /* NewsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB324832049219F00A0E98B /* NewsToolbar.swift */; };
+		4DB324862049422F00A0E98B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB324852049422F00A0E98B /* ImageIO.framework */; };
+		4DB32488204944E400A0E98B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB32487204944E400A0E98B /* MobileCoreServices.framework */; };
 		4DCEBDE1201C30A800F6A9CA /* theme_white.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDD5201C30A700F6A9CA /* theme_white.bundle */; };
 		4DCEBDE2201C30A800F6A9CA /* ZUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDD6201C30A700F6A9CA /* ZUIResources.bundle */; };
 		4DCEBDE3201C30A800F6A9CA /* ENSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEBDD7201C30A700F6A9CA /* ENSDKResources.bundle */; };
@@ -163,6 +166,9 @@
 		4DB2356B201B4ED1001A8DBE /* CYTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYTableViewController.swift; sourceTree = "<group>"; };
 		4DB2356C201B4ED1001A8DBE /* CYViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYViewController.swift; sourceTree = "<group>"; };
 		4DB23586201B4FAF001A8DBE /* CYHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYHomeVC.swift; sourceTree = "<group>"; };
+		4DB324832049219F00A0E98B /* NewsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsToolbar.swift; sourceTree = "<group>"; };
+		4DB324852049422F00A0E98B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		4DB32487204944E400A0E98B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4DCEBDD5201C30A700F6A9CA /* theme_white.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = theme_white.bundle; sourceTree = "<group>"; };
 		4DCEBDD6201C30A700F6A9CA /* ZUIResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZUIResources.bundle; sourceTree = "<group>"; };
 		4DCEBDD7201C30A700F6A9CA /* ENSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ENSDKResources.bundle; sourceTree = "<group>"; };
@@ -205,6 +211,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB32488204944E400A0E98B /* MobileCoreServices.framework in Frameworks */,
+				4DB324862049422F00A0E98B /* ImageIO.framework in Frameworks */,
 				4D3A7FB42046B85F00C07E59 /* Foundation.framework in Frameworks */,
 				4D567AD72042904100FFC69E /* WebKit.framework in Frameworks */,
 				A698815A2026D5A800F40F60 /* YYText.framework in Frameworks */,
@@ -247,6 +255,8 @@
 		3289BD4D73A061B5D6F1A95B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DB32487204944E400A0E98B /* MobileCoreServices.framework */,
+				4DB324852049422F00A0E98B /* ImageIO.framework */,
 				4D3A7FB32046B85F00C07E59 /* Foundation.framework */,
 				4D567AD62042904100FFC69E /* WebKit.framework */,
 				A698815B2026D5A800F40F60 /* YYText.framework */,
@@ -327,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				4D72393C2042AEF700D357E2 /* NewsWebView.swift */,
+				4DB324832049219F00A0E98B /* NewsToolbar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1026,6 +1037,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D567AD520428AFF00FFC69E /* NewsDetailsViewController.swift in Sources */,
+				4DB324842049219F00A0E98B /* NewsToolbar.swift in Sources */,
 				A6948BBF201E1C4B00B1E2AA /* BBNavigationBar.swift in Sources */,
 				4D307D532023133A00F0B39F /* TopMenuView.swift in Sources */,
 				A6382E412031D04D00C91BD9 /* HotHandler.swift in Sources */,

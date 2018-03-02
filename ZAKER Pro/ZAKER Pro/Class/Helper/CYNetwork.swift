@@ -12,6 +12,8 @@ import AlamofireImage
 import Foundation
 import SwiftyJSON
 import Cache
+import ImageIO
+import MobileCoreServices
 
 class CYNetwork {
     // 初始化单例
@@ -42,13 +44,13 @@ extension UIImageView {
         let storage = try? Storage(diskConfig: diskConfig, memoryConfig: memoryConfig)
         
         let tempData = try? storage?.object(ofType: Data.self, forKey: url.absoluteString)
-        
         self.stopAnimatingGIF()
         
         if tempData != nil  {
             self.image = nil
             let data: Data = tempData!!
             self.animate(withGIFData: data)
+            
         } else {
             
             self.af_setImage(withURL: url,

@@ -10,16 +10,19 @@ import UIKit
 import WebKit
 import Alamofire
 import SwiftyJSON
+import SwiftDate
 
-class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITableViewDelegate,NewsWebDelegate {
+class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITableViewDelegate,NewsWebDelegate,NewsToolbarBBDelegate,UIScrollViewDelegate {
 
     public var params:HotCellModel? = nil
     
     private var webView: NewsWebView? = nil
     private var webViewHeight: CGFloat = 200
+    private let bottomBarH: CGFloat = 40
     
     private let activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     private let actBaseView: CYView = CYView()
+    
     
     //在控制器定义全局的可变data，用户存储接收的数据
     var jsonData:NSMutableData = NSMutableData()
@@ -29,11 +32,9 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         }
         
     }
-    let bottomBarH: CGFloat = 40
-    
     
     private let tableView: CYTableView = CYTableView(frame: CGRect.zero, style: .grouped)
-    
+    private let toolbar: NewsToolbar = NewsToolbar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,9 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
+        
+        toolbar.bbDelegate = self
+        self.view.addSubview(toolbar)
         
         self.asynchronousGet()
         
@@ -78,6 +82,7 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
                 webView = NewsWebView()
                 webView?.setParams()
                 webView?.newsDelegate = self
+                webView?.superScrollView = tableView
                 webView?.frame = CGRect(x: 0, y: 0, width: CYDevice.width(), height: webViewHeight)
                 headerView?.contentView.addSubview(webView!)
             }
@@ -161,15 +166,38 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         let engine: MGTemplateEngine = MGTemplateEngine()
         engine.matcher = ICUTemplateMatcher(templateEngine: engine)
         engine.setObject(newBody, forKey: "content")
+        engine.setObject(dataSoucre!["title"], forKey: "title")
+        
+        let date = DateInRegion(string: dataSoucre!["ptime"]! as! String, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: nil)
+        
+        let date1: String = "\(dataSoucre!["source"] ?? "") | \(date?.colloquialSinceNow() ?? "")"
+        engine.setObject(date1, forKey: "date")
         
         let templatePath: String = Bundle.main.path(forResource: "HTMLTemplate", ofType: "html")!
-        let html: String = engine.processTemplateInFile(atPath: templatePath, withVariables: nil)
+        var html: String = engine.processTemplateInFile(atPath: templatePath, withVariables: nil)
+        
+        html = self.deleteStrongTag(html: html)
         
         print("新的 html \(html)")
         
         webView?.imgDetalis = img
         webView?.imageUrls = imageUrls
         webView?.loadHTMLString(html, baseURL: nil)
+    }
+    
+    func deleteStrongTag(html: String) -> String {
+        var newHtml: String = html
+        
+        if newHtml.contains("<strong><strong>") {
+            newHtml = newHtml.replacingOccurrences(of: "<strong><strong>", with: "<strong>")
+            
+            if newHtml.contains("</strong></strong>") {
+                newHtml = newHtml.replacingOccurrences(of: "</strong></strong>", with: "</strong>")
+                return self.deleteStrongTag(html: newHtml)
+            }
+        }
+        
+        return newHtml
     }
 
     // MARK: - NewsWebDelegate
@@ -197,6 +225,16 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         
     }
     
+    // MARK: - NewsToolbarBBDelegate
+    func popViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - UIScrollViewDelegate
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        webView?.setScrollView(scrollView: scrollView)
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -208,9 +246,13 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
         let y: CGFloat = CYDevice.statusBar_h()
         self.tableView.frame = CGRect.init(x: 0, y: y, width: self.view.width, height: self.view.height - y - bottomBarH)
         
+        self.toolbar.frame = CGRect(x: 0, y: tableView.bottom, width: self.view.width, height: bottomBarH)
+        
+        
         self.view.bringSubview(toFront: actBaseView)
         actBaseView.frame = self.tableView.frame
         activityView.center = actBaseView.center
+        
         
     }
 
