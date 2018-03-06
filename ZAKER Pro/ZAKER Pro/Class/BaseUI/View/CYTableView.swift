@@ -26,4 +26,20 @@ class CYTableView: UITableView {
     }
     */
 
+    func customScrollBar(image: UIImage) {
+        
+        for view in self.subviews {
+            
+            if view.isMember(of: UIImageView.self) {
+                let w = view.width
+                let h = view.height
+                let r = CGFloat.minimum(w, h)
+                if r == w {
+                    view.setValue(image, forKey: "image")
+                }
+            }
+        }
+        
+    }
+    
 }

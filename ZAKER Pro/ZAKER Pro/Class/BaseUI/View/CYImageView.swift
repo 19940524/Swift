@@ -9,7 +9,13 @@
 import UIKit
 import Gifu
 
+public protocol ImageURL {
+    
+    var url: String? { get set }
+}
+
 extension UIImageView: GIFAnimatable {
+    
     private struct AssociatedKeys {
         static var AnimatorKey = "gifu.animator.key"
     }
@@ -35,7 +41,9 @@ extension UIImageView: GIFAnimatable {
     }
 }
 
-class CYImageView: UIImageView  {
+class CYImageView: UIImageView,ImageURL  {
+    var url: String?
+    
     
     /*
     // Only override draw() if you perform custom drawing.

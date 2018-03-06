@@ -26,7 +26,7 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
         }
     }
     
-    public var imageUrls: Array<String>? = nil
+    public var imageUrls: Array<String>? = Array()
     public var imgDetalis: Array<Dictionary<String, String>>? = nil
     var imageOriginY: Array<CGFloat>? = Array()
     let imageTag: Int = 4000
@@ -75,6 +75,7 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
     
     func updateContentImageFrame() {
         imageOriginY?.removeAll()
+        imageUrls?.removeAll()
         
         for view in self.scrollView.subviews {
             if view.isMember(of: CYImageView.self) {
@@ -83,10 +84,11 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
         }
         
         let imgs = self.imgDetalis
-        
-        var i: Int = 0
-        for imgParams in imgs! {
+        let count:Int = (imgs?.count)!
+        for i in 0..<count {
+            let imgParams = imgs![i]
             let divIdName: String = "guobinImageID\(i)"
+            imageUrls?.append(imgParams["src"]!)
             
             self.getDivFrame(name: divIdName, complated: { [weak self] (divFrame) in
                 
@@ -112,14 +114,12 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
                     imageView.bb_setImage(withURL: URL(string: imgParams["src"]!)!)
                 }
             })
-            
-            i += 1
         }
     }
     
     
     @objc func clickPhoto(sender: UITapGestureRecognizer) {
-        print(sender.view!)
+        self.newsDelegate?.clickPhoto(webView: self, urls: imageUrls!, selIndex: (sender.view?.tag)! - imageTag)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -142,24 +142,26 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
             let tempYList: Array = self.imageOriginY!
             let imgs     : Array = self.imgDetalis!
             
-            var i: Int = 0
-            for currentImageY: CGFloat in tempYList {
-                
+            
+            for i in 0..<tempYList.count {
+                let currentImageY: CGFloat = tempYList[i]
                 if i >= imgs.count { break }
                 
                 let imgParams: Dictionary = imgs[i]
                 
-                if currentImageY < offsetY {
+                if currentImageY < offsetY && currentImageY > offsetY - (self.superScrollView?.height)!  {
                     
-                    DispatchQueue.main.async {
-                        奔溃
-                        print(i)
-                        let imageView: UIImageView = self.scrollView.viewWithTag(self.imageTag + i) as! UIImageView
-                        imageView.bb_setImage(withURL: URL(string: imgParams["src"]!)!)
+                    DispatchQueue.main.sync {
+                        
+                        let tag = self.imageTag + i
+                        print("tag = \(tag)")
+                        let imageView: CYImageView? = self.scrollView.viewWithTag(tag) as? CYImageView
+//                        imageView?.bb_setImage(withURL: URL(string: imgParams["src"]!)!)
+                        imageView?.af_setImage(withURL: URL(string: imgParams["src"]!)!)
                     }
                 }
                 
-                i += 1
+                
             }
             
         }
@@ -168,8 +170,47 @@ class NewsWebView: CYWebView, WKNavigationDelegate {
         self.setNeedsLayout()
     }
     
+    func startGIF() {
+        guard self.imgDetalis?.count != 0 else {
+            return
+        }
+        let imgs     : Array = self.imgDetalis!
+        for i in 0..<imgs.count {
+            let tag = self.imageTag + i
+            
+            let imageView: CYImageView? = self.scrollView.viewWithTag(tag) as? CYImageView
+            imageView?.startAnimating()
+        }
+        
+    }
+    
+    func stopGIF() {
+        guard self.imgDetalis?.count != 0 else {
+            return
+        }
+        let imgs     : Array = self.imgDetalis!
+        for i in 0..<imgs.count {
+            let tag = self.imageTag + i
+            
+            let imageView: CYImageView? = self.scrollView.viewWithTag(tag) as? CYImageView
+            imageView?.stopAnimating()
+        }
+    }
+    
     deinit {
         superScrollView?.removeObserver(self, forKeyPath: "contentOffset", context: &myContext)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.stopGIF()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.startGIF()
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        return super.hitTest(point, with: event)
     }
     
 }

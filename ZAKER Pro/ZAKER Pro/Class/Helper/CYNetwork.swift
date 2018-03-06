@@ -27,9 +27,59 @@ class CYNetwork {
     
 }
 
-extension UIImageView {
+extension CYImageView {
+    func bb_setImage(
+        withURL url: URL,
+        placeholderImage: UIImage? = nil,
+        filter: ImageFilter? = nil,
+        progress: ImageDownloader.ProgressHandler? = nil,
+        progressQueue: DispatchQueue = DispatchQueue.main,
+        imageTransition: ImageTransition = .noTransition,
+        runImageTransitionIfCached: Bool = false,
+        completion: ((DataResponse<UIImage>) -> Void)? = nil) {
+        // 判断url是否在data cache中
+        let diskConfig = DiskConfig(name: "Floppy")
+        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 0, totalCostLimit: 0)
+        let storage = try? Storage(diskConfig: diskConfig, memoryConfig: memoryConfig)
+        
+        let tempData = try? storage?.object(ofType: Data.self, forKey: url.absoluteString)
+        
+        if tempData != nil  {
+            if self.url == url.absoluteString {
+                return
+            }
+            self.stopAnimatingGIF()
+            self.image = nil
+            let data: Data = tempData!!
+            self.animate(withGIFData: data)
+            
+        } else {
+            self.stopAnimatingGIF()
+            self.af_setImage(withURL: url,
+                             placeholderImage: placeholderImage,
+                             filter: filter,
+                             progress: progress,
+                             progressQueue: progressQueue,
+                             imageTransition: imageTransition,
+                             runImageTransitionIfCached: runImageTransitionIfCached,
+                             completion: { (response) in
+                                if response.result.isSuccess && (response.data != nil) {
+                                    let imageData: NSData = response.data! as NSData
+                                    if imageData.bb_imageFormat == .GIF {
+                                        try? storage?.setObject(response.data, forKey: url.absoluteString)
+                                        self.animate(withGIFData: response.data!)
+                                    }
+                                }
+                                
+            })
+        }
+        self.url = url.absoluteString
+    }
     
-    public func bb_setImage(
+}
+
+extension UIImageView {
+    public func ui_setImage(
         withURL url: URL,
         placeholderImage: UIImage? = nil,
         filter: ImageFilter? = nil,
@@ -71,9 +121,6 @@ extension UIImageView {
                                 
             })
         }
-        
-        
     }
 }
-
 

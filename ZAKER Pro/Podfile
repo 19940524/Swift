@@ -19,6 +19,7 @@ target 'ZAKER Pro' do
   pod 'FSPagerView'
   pod 'Gifu', '~> 3.0.0'
   pod 'Cache'
+  pod 'SKPhotoBrowser'  
 
   target 'ZAKER ProTests' do
     inherit! :search_paths

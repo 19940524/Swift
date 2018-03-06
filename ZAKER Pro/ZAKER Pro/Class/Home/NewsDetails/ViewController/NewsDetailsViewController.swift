@@ -11,6 +11,7 @@ import WebKit
 import Alamofire
 import SwiftyJSON
 import SwiftDate
+import SKPhotoBrowser
 
 class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITableViewDelegate,NewsWebDelegate,NewsToolbarBBDelegate,UIScrollViewDelegate {
 
@@ -29,6 +30,7 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     var dataSoucre: Dictionary<String, Any>? {
         didSet {
             self.loadHTML()
+            self.tableView.customScrollBar(image: UIImage.init(named: "common_button_white_highlighted")!)
         }
         
     }
@@ -62,7 +64,7 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     
     // UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -222,7 +224,19 @@ class NewsDetailsViewController: CYViewController, UITableViewDataSource, UITabl
     }
     
     func clickPhoto(webView: NewsWebView, urls: Array<String>, selIndex: NSInteger) {
+        // 1. create URL Array
+        var images = [SKPhoto]()
+        for url in urls {
+            let photo = SKPhoto.photoWithImageURL(url)
+            photo.shouldCachePhotoURLImage = true // you can use image cache by true(NSCache)
+            images.append(photo)
+            
+        }
         
+        // 2. create PhotoBrowser Instance, and present.
+        let browser = SKPhotoBrowser(photos: images)
+        browser.initializePageIndex(selIndex)
+        present(browser, animated: true, completion: {})
     }
     
     // MARK: - NewsToolbarBBDelegate
