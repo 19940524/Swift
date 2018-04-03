@@ -22,6 +22,10 @@ class ITButton: CYButton {
     /// - bvCenter: 图片在下垂直居中
     /// - lHalfAndHalf: 图片在左对半
     /// - rHalfAndHalf: 图片在右对半
+    /// - leftTitleCenter: 标题靠左
+    /// - rightTitleCenter: 标题靠右
+    /// - topTitleCenter: 标题靠上
+    /// - bottomTitleCenter: 标题靠下
     enum ITAlignment: Int {
         case left        = 0
         case right       = 1
@@ -33,6 +37,10 @@ class ITButton: CYButton {
         case bvCenter     = 7
         case lHalfAndHalf = 8
         case rHalfAndHalf = 9
+        case leftTitleCenter    = 10
+        case rightTitleCenter   = 11
+        case topTitleCenter     = 12
+        case bottomTitleCenter  = 13
     }
     var itAlignment : ITAlignment = .lhCenter {
         didSet {
@@ -41,7 +49,7 @@ class ITButton: CYButton {
     }
     
     /// 图片和标题间隔
-    var itMargin : CGFloat = 8 {
+    var itMargin : CGFloat = 0 {
         didSet {
             self.setNeedsLayout();
         }
@@ -168,6 +176,34 @@ class ITButton: CYButton {
             
             imagePoint.x = sWidth / 2 + itMargin / 2
             imagePoint.y = sHeight / 2 - imageSize.height / 2
+            break
+        case .leftTitleCenter:
+            titlePoint.x = itInset.left
+            titlePoint.y = sHeight / 2 - titleSize.height / 2
+            
+            imagePoint.x = titlePoint.x + titleSize.width + itMargin
+            imagePoint.y = sHeight / 2 - imageSize.height / 2
+            break
+        case .rightTitleCenter:
+            titlePoint.x = sWidth - itInset.right - titleSize.width
+            titlePoint.y = sHeight / 2 - titleSize.height / 2
+            
+            imagePoint.x = titlePoint.x - itMargin - imageSize.width
+            imagePoint.y = sHeight / 2 - imageSize.height / 2
+            break
+        case .topTitleCenter:
+            titlePoint.y = itInset.top
+            titlePoint.x = sWidth / 2 - titleSize.width / 2
+            
+            imagePoint.y = titlePoint.y + titleSize.height + itMargin
+            imagePoint.x = sWidth / 2 - imageSize.width / 2
+            break
+        case .bottomTitleCenter:
+            titlePoint.y = sHeight - itInset.bottom - titleSize.height
+            titlePoint.x = sWidth / 2 - titleSize.width / 2
+            
+            imagePoint.y = titlePoint.y - itMargin - imageSize.height
+            imagePoint.x = sWidth / 2 - imageSize.width / 2
             break
         }
         
