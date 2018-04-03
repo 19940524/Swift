@@ -11,25 +11,25 @@ Table Views
 
 Collection Views
 
-UIScrollView
+UIScrollView        2018.2.24 21:00
 
 UIStackView
 
 ## Content Views
-UIImageView
+UIImageView       2018.2.24 21:00
 
 UIPickerView
 
 UIProgressView
 
-UIActivityIndicatorView
+UIActivityIndicatorView   2018.2.24 21:00
 
-UIWebView
+UIWebView         2018.2.24 21:00
 
 ## Controls
 UIControl
 
-UIButton
+UIButton          2018.2.24 21:00
 
 UISwitch
 
@@ -45,11 +45,11 @@ UIStepper
 
 
 ## Text Views 
-UILabel
+UILabel           2018.2.24 21:00
 
 UITextField
 
-UITextView
+UITextView        2018.2.24 21:00
 
 
 ## Bars
@@ -57,11 +57,11 @@ UIBarItem
 
 UIBarButtonItem
 
-UITabBar
+UITabBar          2018.2.24 21:00
 
 UITabBarItem
 
-UIToolBar
+UIToolBar        2018.2.24 21:00
 
 UINavigationBar
 
