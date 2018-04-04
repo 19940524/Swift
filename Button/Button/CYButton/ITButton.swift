@@ -76,6 +76,7 @@ class ITButton: CYButton {
         self.titleLabel?.sizeToFit()
         var titleSize : CGSize = (self.titleLabel?.size)!
         
+        // 计算标题最大宽度
         if itAlignment == .left || itAlignment == .right {
             tMaxWidth -= itInset.left + itInset.right - itMargin - imageSize.width
         }
@@ -209,10 +210,6 @@ class ITButton: CYButton {
         
         self.imageView?.frame = CGRect(origin: imagePoint, size: imageSize)
         self.titleLabel?.frame = CGRect(origin: titlePoint, size: titleSize)
-        // 标题最大值
-        
-        // 获取大小
-        
     }
     
     /*
